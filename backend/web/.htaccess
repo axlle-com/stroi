@@ -1,0 +1,16 @@
+
+AddDefaultCharset UTF-8
+# Mod_Autoindex
+# Запрещаем просмотр содержимого папок
+Options -Indexes
+
+# Mod_Rewrite
+Options +FollowSymlinks
+# Включаем mod_rewrite
+RewriteEngine On
+
+# Если это папка или файл, открываем её/его
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# В противном случае перенаправляем на index.php
+RewriteRule . index.php

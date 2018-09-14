@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Host: www.srub-stroi.ru
+Sitemap: http://www.srub-stroi.ru/sitemap.xml

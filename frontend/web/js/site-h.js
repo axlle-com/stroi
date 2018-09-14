@@ -1,0 +1,1 @@
+(function () {"use strict";jQuery('#revslider').revolution({delay:8000,startwidth:1170,startheight:500,fullWidth:"on",fullScreen:"on",hideTimerBar: "off",spinner:"spinner4",navigationStyle: "preview4",soloArrowLeftHOffset:20,soloArrowRightHOffset:20});})();

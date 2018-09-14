@@ -1,0 +1,50 @@
+
+AddDefaultCharset UTF-8
+# Mod_Autoindex
+# Запрещаем просмотр содержимого папок
+Options -Indexes
+
+# Mod_Rewrite
+Options +FollowSymlinks
+# Включаем mod_rewrite
+RewriteEngine On
+
+# Если это папка или файл, открываем её/его
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# В противном случае перенаправляем на index.php
+RewriteRule . index.php
+
+<ifModule mod_expires.c>
+    ExpiresActive On
+    #по умолчанию кеш в 5 секунд
+    ExpiresDefault "access plus 5 seconds"
+    # Включаем кэширование изображений и флэш на месяц
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 4 weeks"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/gif "access plus 43829 minutes"
+    ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+    # Включаем кэширование css, javascript и текстовых файлов на одну неделю
+    ExpiresByType text/css "access plus 604800 seconds"
+    ExpiresByType text/javascript "access plus 604800 seconds"
+    ExpiresByType application/javascript "access plus 604800 seconds"
+    ExpiresByType application/x-javascript "access plus 604800 seconds"
+    # Включаем кэширование html и htm файлов на один день
+    ExpiresByType text/html "access plus 43200 seconds"
+    ExpiresByType text/htm "access plus 43200 seconds"
+    # Включаем кэширование xml файлов на десять минут
+    ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+
