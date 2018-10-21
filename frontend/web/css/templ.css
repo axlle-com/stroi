@@ -11,6 +11,22 @@
     font-weight: 700;
 }
 /*** home ***/
+.service-box.revers{
+    color: #59ab02;
+    background: #3c3c3c;
+    border: 2px solid #3c3c3c;
+}
+.service-box.revers h3{
+    color: #59ab02;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
+}
+.service-box.revers:hover{
+    background: #fafafa;
+    border: 2px solid #eaeaea;
+}
+.service-box.revers:hover h3{
+    color: #3c3c3c;
+}
 
 #latest-posts .post-item .post-img img, #latest-posts .post-item .post-img {
     overflow: hidden;

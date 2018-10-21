@@ -72,7 +72,41 @@ $images = Common::getSlider()['images'];
             </div><!-- End .col-sm-4 -->
         </div><!-- End .row -->
     </div><!-- End .container-fluid -->
-
+        <div class="bg-lightergray no-overflow pt70 pb30">
+            <div class="container">
+                <h2 class="title-underblock custom text-uppercase text-center mb50">Наши преимущества</h2>
+                <div class="row">
+                        <div class="col-sm-3">
+                            <div class="service vertical service-hover-bg dark text-center service-box revers" data-box-animation="to-right-animation-0">
+                                <div class="service-content">
+                                    <h3 class="service-title text-uppercase">Показываем готовые объекты</h3>
+                                </div><!-- End .service-content -->
+                            </div><!-- End .service -->
+                        </div><!-- End .col-sm-3 -->
+                        <div class="col-sm-3">
+                            <div class="service vertical service-hover-bg dark text-center service-box revers" data-box-animation="to-right-animation-1">
+                                <div class="service-content">
+                                    <h3 class="service-title text-uppercase">Делаем с отделкой весь цикл работ</h3>
+                                </div><!-- End .service-content -->
+                            </div><!-- End .service -->
+                        </div><!-- End .col-sm-3 -->
+                        <div class="col-sm-3">
+                            <div class="service vertical service-hover-bg dark text-center service-box revers" data-box-animation="to-right-animation-2">
+                                <div class="service-content">
+                                    <h3 class="service-title text-uppercase">Выезжаем на участок для осмотра</h3>
+                                </div><!-- End .service-content -->
+                            </div><!-- End .service -->
+                        </div><!-- End .col-sm-3 -->
+                        <div class="col-sm-3">
+                            <div class="service vertical service-hover-bg dark text-center service-box revers" data-box-animation="to-right-animation-3">
+                                <div class="service-content">
+                                    <h3 class="service-title text-uppercase">Выгодные условия оплаты(рассрочка)</h3>
+                                </div><!-- End .service-content -->
+                            </div><!-- End .service -->
+                        </div><!-- End .col-sm-3 -->
+                </div><!-- End .row -->
+            </div>
+        </div><!-- End .bg-lightergray -->
     <div class="bg-lightergray no-overflow pt70">
         <div class="container ">
             <h1 class="title-underblock custom text-uppercase text-center mb50">Каталог проектов</h1>
