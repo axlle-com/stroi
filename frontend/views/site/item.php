@@ -72,10 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="subtotal-row old-price">Старая цена:<span><strong data-item-old-price="<?=number_format(($model->details->original_price), 0, ',', '');?>"><?=number_format(($model->details->original_price), 0, ',', ' ');?></strong> &#8381;</span></div>
                                 <div class="grandtotal-row">Цена:<span><strong data-item-price="<?=Common::getSalePrice($model,'');?>"><?=Common::getSalePrice($model,' ');?></strong> &#8381;</span></div>
                                 <div class="grandtotal-row product-sale">Выгода:<span><strong data-item-sale=""><?=number_format($model->details->original_price - Common::getSalePrice($model,''), 0, ',', ' ')?></strong> &#8381;</span></div>
-                                <? if ($model->category->alias_category != 'proekti-ban-iz-brevna')
-                                {?>
-                                <a href="<?=Url::to(['/skidki/skidka-na-originalnye-doma-iz-sruba-v-moskovskoj-oblasti'])?>" title="Ещё скидку ?" class="btn btn-custom2 btn-block text-uppercase">Ещё скидку ?</a>
-                                <?}?>
+                                
                                 <a title="Добавить в избранное" class="multiple-link add-to-favorite" data-favorite="<?=$model->id?>"><i class="fa fa-heart-o" aria-hidden="true"></i>Добавить в избранное</a>
                                 <a href="<?=Url::to(['/price/tseny-na-derevyannye-doma-i-bani'])?>" title="Базовая комплектация" class="multiple-link"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Базовая комплектация.<br>Цена указана без отделки.</a>
                                 <? if ($same_item = Item::findOne($model->details->same_item))
@@ -112,6 +109,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="product-description">
                             <?=$model->description?>
                         </div>
+                        <button class="btn btn-custom btn-border no-radius button-message message-catalog" data-toggle="modal" data-target="#modal-contact-form-advanced-q">
+                            Задать вопрос специалисту
+                        </button>
                         <div class="panel-group panel-description" role="tablist" aria-multiselectable="true">
                             <?if($model->infoblocks)
                             {
@@ -248,7 +248,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3 class="modal-title" id="myModalLabel5">Написать нам</h3>
                     </div><!-- End .modal-header -->
                     <div class="modal-body">
-                        <? echo \frontend\widgets\MessageWidget::widget() ?>
+                        <? echo \frontend\widgets\QuestionWidget::widget() ?>
                     </div><!-- End .modal-body -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
@@ -256,5 +256,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div><!-- End .modal-content -->
             </div><!-- End .modal-dialog -->
         </div>
+        <div class="modal fade" id="modal-contact-form-advanced-q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="myModalLabel6">Написать нам</h3>
+                </div><!-- End .modal-header -->
+                <div class="modal-body">
+                    <? echo \frontend\widgets\MessageWidget::widget() ?>
+                </div><!-- End .modal-body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                </div><!-- End .modal-footer -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div>
     </div><!-- End .container -->
 <div class="mb20 hidden-xs hidden-sm"></div><!-- space -->

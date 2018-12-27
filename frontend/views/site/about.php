@@ -40,49 +40,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <li></li>
     </ul>
 </div>
-    <div class="popup-gallery">
-        <h2></h2>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="portfolio-item portfolio-image-zoom">
-                    <figure>
-                        <a href="/images/image/zoomzoom/general/general_zoomzoom_1503565776.jpg" class="zoom-item tumb-active" title="Сортировка леса фото-1" data-tumb="/images/image/zoomzoom/general/general_zoomzoom_1503565776.jpg">
-                            <img class="img-responsive" src="/images/image/zoomzoom/general/small_general_zoomzoom_1503565776.jpg" alt="Сортировка леса фото-1" title="Сортировка леса фото-1">
-                        </a>
-                    </figure>
-                    <div class="portfolio-meta">
-                        <h3 class="portfolio-title">Сортировка леса фото-1</h3>
-                    </div><!-- End .portfolio-meta -->
-                </div><!-- End .portfolio-item -->
-            </div>
-            <div class="col-sm-6">
-                <div class="portfolio-item portfolio-image-zoom">
-                    <figure>
-                        <a href="/images/image/zoomzoom/general/general_zoomzoom_1503565795.jpg" class="zoom-item" title="Сортировка леса фото-2" data-tumb="/images/image/zoomzoom/general/general_zoomzoom_1503565795.jpg">
-                            <img class="img-responsive" src="/images/image/zoomzoom/general/small_general_zoomzoom_1503565795.jpg" alt="Сортировка леса фото-2" title="Сортировка леса фото-2">
-                        </a>
-                    </figure>
-                    <div class="portfolio-meta">
-                        <h3 class="portfolio-title">Сортировка леса фото-2</h3>
-                    </div><!-- End .portfolio-meta -->
-                </div><!-- End .portfolio-item -->
-            </div>
-        </div>
-    </div>
 
 <div class="blog-content">
-    <p>Бани из бревна с террасой – оптимальное решение, позволяющее превратить парную из обычного помещения для банных процедур в комфортное и стильное место релакса и отдыха с родными или друзьями. Подобное строение можно использовать не только в качестве банных процедур, но и устроить настоящее застолье на лоне природы или расслабиться после парилки. Места хватит всем.</p>
-    <h2>Проекты бань с террасой: в чем польза?</h2>
-    <p>Терраса - горизонтальная площадка или открытая веранда при входе в здание, которая оснащена настилом из дерева. Она может быть оборудована перилами и крышей, но возможны варианты с отсутствием навеса или глухими стенами. Удобная пристройка для отдыха:</p>
-    <ul class="list-style list-square">
-        <li>придает зданию привлекательный вид;</li>
-        <li>действует в качестве теплоизоляционной преграды, предотвращающей проникновение в парную холодных потоков воздуха;</li>
-        <li>служит частичной защитой для комнат от попадания грязи с улицы</li>
-    </ul>
-    <h2>Заказать строительство бани с террасой в «Сруб-Строй»</h2>
-    <p>Компания «Сруб-Строй» имеет многолетний опыт возведения строений из бревен и создаст для вас уютную баньку по индивидуальному заказу. Мы работаем в Москве и Московской области, принимая заказы ежедневно с 9 утра до 20-00 без выходных. Позвонить нам можно по телефону +7 (495) 997 10 78 .</p>
+    <p>Строения из бревна 30-40 см одни из самых долговечных и эстетичных сооружений 21 века. Они несут в себе красоту и энергетику вековых деревьев. Срубы домов из такого диаметра при правильной эксплуатации смогут прослужить сотню лет. Очень красиво смотрятся интерьеры таких строений, особенно бань.</p>
+    <p>Компания «Сруб-Строй» второй десяток лет, а именно 14 лет, занимается изготовлением срубов домов и бань из бревна диаметром 30-40 см, наши работы можно увидеть в фотогалерее и в живую у конкретных заказчиков которым мы построили в этом и предыдущих годах.</p>
+    <div class="custom-info-block"><div class="info-label"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></div>
+        <div class="custom-info">
+            Скидка на дома и бани диаметром 30-40 см - 12%
+        </div>
+    </div>
+    <p>Наша компания рада сообщить любителям сооружений из бревна диаметром 30-40 см, что теперь предоставляется скидка 12%.</p>
 </div>
 
+    <ul class="list-style list-decimal">
+        <li>Стеновой комплект из бруса</li>
+        <li>Межвенцовый утеплитель</li>
+        <li>Метизы , нагели</li>
+        <li>Половые, потолочные балки</li>
+        <li>Гидроизоляция фундамента</li>
+        <li>Стропильная система</li>
+        <li>Обрешётка крыши</li>
+        <li>Кровля рубероид</li>
+        <li>Фронтоны имитация бруса</li>
+        <li>Доставка</li>
+        <li>Разгрузка</li>
+        <li>Сборка дома с кровлей</li>
+    </ul>
+    <a href="/price/tseny-na-derevyannye-doma-i-bani.htm" class="entry-readmore text-right">Подробнее...<i class="fa fa-angle-right"></i></a>
+    
+    
+    
     <?php
     $item = Common::getHotPrice();
     $cnt = 0;

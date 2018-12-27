@@ -19,6 +19,9 @@
 
                             <span class="social-icons-label">Присоединяйтесь:</span>
                             <div class="social-icons">
+                                <span data-link="https://api.whatsapp.com/send?phone=79159100055" class="social-icon icon-whatsapp hidden-link" title="whatsapp">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                </span>
                                 <span data-link="https://vk.com/club142581712" class="social-icon icon-vk hidden-link" title="VK">
                                     <i class="fa fa-vk" aria-hidden="true"></i>
                                 </span>
@@ -91,7 +94,7 @@
                     </ul>
                 </div><!-- End .col-md-6 -->
                 <div class="col-md-6 col-md-pull-6">
-                    <p class="copyright">ООО "Сруб-Строй".  All rights reserved. &copy; <a href="http://www.srub-stroi.ru">www.srub-stroi.ru</a></p>
+                    <p class="copyright">ООО "Сруб-Строй" &copy;.  All rights reserved.  <a id="axlle" href="https://axlle.com" target="_blank">Создание и продвижение сайтов "axlle.com"</a></p>
                 </div><!-- End .col-md-6 -->
             </div><!-- End .row -->
         </div><!-- End .container -->
@@ -99,7 +102,7 @@
 </footer><!-- End #footer -->
 <!-- // footer-end -->
 <!--  hot-price -->
-<div id="hot-price" class="hot-price">
+<!--<div id="hot-price" class="hot-price">
     <div class="hot-price-block">
         <h2>Баня в подарок</h2>
         <p class="hot">Беспрецедентная акция!</p>
@@ -109,7 +112,7 @@
     </div>
     
     <span class="close-hot"><i class="fa fa-times" aria-hidden="true"></i></span>
-</div>
+</div>-->
 <!-- cnt -->
 <script type="text/javascript">(function(w,d,c){var s=d.createElement('script'),h=d.getElementsByTagName('script')[0],e=d.documentElement;if((' '+e.className+' ').indexOf(' ya-page_js_yes ')===-1){e.className+=' ya-page_js_yes';}s.type='text/javascript';s.async=true;s.charset='utf-8';s.src=(d.location.protocol==='https:'?'https:':'http:')+'//site.yandex.net/v2.0/js/all.js';h.parentNode.insertBefore(s,h);(w[c]||(w[c]=[])).push(function(){Ya.Site.Form.init()})})(window,document,'yandex_site_callbacks');</script>
 <!-- Yandex.Metrika counter -->
@@ -126,3 +129,15 @@
 
 </script>
 <!-- // cnt -->
+<!-- Begin LeadBack code {literal} -->
+<script>
+    var _emv = _emv || [];
+    _emv['campaign'] = '12f2b19fb872d89ff6f7c724';
+
+    (function() {
+        var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+        em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+    })();
+</script>
+<!-- End LeadBack code {/literal} -->

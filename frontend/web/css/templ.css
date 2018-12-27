@@ -202,7 +202,7 @@ p.bani_left:hover{
     -webkit-transition: all 0.5s ease-in-out;
 }
 p.bani_left strong{
-    font-size: 28px;
+    font-size: 22px;
     color: #f44336;
 }
 p.mat_cap_left{
@@ -212,7 +212,7 @@ p.mat_cap_left{
     font-weight: 700;
     padding: 350px 10px 100px 10px;
     max-height: 650px;
-    background: url("../images/backgrounds/banner_left-3.png"), url("../images/backgrounds/banner_left-2-2.png"), #3c3c3c;
+    background: url("../images/backgrounds/banner_left-3.png"), url("../images/backgrounds/banner_left-2-3.png"), #3c3c3c;
     background-repeat: no-repeat;
     background-position: 50% 100%, 50% 0;
     -webkit-background-origin: padding-box;
@@ -325,7 +325,7 @@ p.mat_cap_left:hover{
 }
 .ban_rev1{
     border: 1px solid #3c3c3c;
-    background: url("../images/backgrounds/mat_cup2.png"), url("../images/backgrounds/mat_cup3.png"), #3c3c3c;
+    background: url("../images/backgrounds/mat_cup2-2.png"), url("../images/backgrounds/mat_cup3.png"), #3c3c3c;
     background-repeat: no-repeat;
     background-position: 100% 50%, 0 100%;
     -webkit-background-origin: padding-box;
@@ -415,6 +415,25 @@ header .social li, footer .social li {
     -ms-transition: background .5s ease-in-out;
     transition: background .5s ease-in-out;
     padding: 1px;
+    font-size: 20px;
+}
+header .social li.vk{
+    color: #45668e;
+}
+header .social li.instagram{
+    color: #ad0e9f;
+}
+header .social li.odnoklassniki{
+    color: #f7931e;
+}
+header .social li.facebook{
+    color: #395692;
+}
+header .social li.youtube{
+    color: #ff0000;
+}
+header .social li.whatsapp {
+    color: #00e676;
 }
 .login li{
 	border-right: 1px solid #ddd;
@@ -820,7 +839,7 @@ select.form-control.styled-select:after {
     border: 2px solid #f44336;
     color: #f44336;
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 .btn.btn-border.button-message.message-catalog:focus{
     border: 2px solid silver;
@@ -1566,12 +1585,28 @@ header .phone li{
 
 .mail.pull-right a{
     margin-right: 15px;
+    border-bottom: 1px dotted rgba(80, 80, 80, 0.3);
+}
+.navbar-white.navbar-transparent .mail.pull-right a{
+    border-bottom: 1px dotted rgba(240, 240, 240, 0.6);
+}
+.navbar-white.navbar-transparent .phone a{
+    border-bottom: 1px dotted rgba(240, 240, 240, 0.6);
 }
 .mail.pull-right a i,ul.phone. li>i{
     margin-right: 10px !important;
 }
+.navbar-white.navbar-transparent .mail.pull-right{
+    color: #fff;
+}
 .navbar-transparent .phone{
     color: #f1f1f1;
+}
+.phone li i{
+    margin-left: 7px;
+}
+.phone a{
+    border-bottom: 1px dotted rgba(80, 80, 80, 0.3);
 }
 .navbar-white.navbar-transparent .navbar-brand {
     border-color: transparent;
@@ -1581,6 +1616,17 @@ header .phone li{
 }
 .main-widget{
     min-height:510px;
+}
+.navbar-top {
+    font: 600 18px/38px Play,Verdana;
+}
+.navbar-toggle.pull-right {
+    margin-left: 0px;
+}
+.navbar-toggle{
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 22px;
 }
 /***--category.item--***/
 div.product-details-container{
@@ -2331,7 +2377,7 @@ html, body,#wrapper{
     position: absolute;
     height: 100%;
     width: 100%;
-    background: url(../images/patterns/overlay/3.png), rgba(0, 0, 0, 0.4);
+    background: url(../images/patterns/overlay/3.png), rgba(0, 0, 0, 0.2);
 
 }
 .img-scl{
@@ -2872,8 +2918,32 @@ div.hot-price.left{
     }
 }
 /***-/-animation*****/
+/**** gallery *****/
+.custom-gallery{
+    overflow: hidden;
+}
+.custom-gallery .entry.entry-box{
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+}
+.custom-gallery .entry.entry-box:hover{
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+}
+.custom-gallery .entry.entry-box .entry-media {
+    margin-bottom: 0;
 
-
+}
+.custom-gallery h2 {
+    color: #59ab02;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+/***-/-gallery*****/
 
 @media (min-width: 600px) and (max-width: 991px) {
     .product-gallery-container {
@@ -3008,6 +3078,9 @@ div.hot-price.left{
     }
 }
 @media (min-width: 968px) and (max-width: 1200px){
+    .navbar-nav > li > a{
+        padding: 30px 5px;
+    }
     .nav-tabs > li > a, .nav-pills > li > a {
         max-width: 80px;
         overflow: hidden;
@@ -3413,6 +3486,9 @@ div.hot-price.left{
         margin-top: 15px;
         padding: 5px 10px;
     }
+    .navbar-top {
+        font: 600 16px/38px Play,Verdana;
+    }
 }
 @media (max-width: 375px) {
     .ban_rev1 .colored-box, .ban_rev2 .colored-box  {
@@ -3451,5 +3527,20 @@ div.hot-price.left{
         font-weight: 700;
         font-size: 18px;
         font-style: italic ;
+    }
+    .navbar-top {
+        font: 600 13px/38px Play,Verdana;
+    }
+    .mail.pull-right a {
+        margin-right: 0;
+    }
+    header .phone li{
+        padding: 0;
+    }
+    .navbar-toggle{
+        margin-right: 3px;
+    }
+    .navbar-header .navbar-btn.pull-right.last{
+        margin-right: 3px;
     }
 }

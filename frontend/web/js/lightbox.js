@@ -115,7 +115,8 @@ ImageBox.prototype.links_collection = function (elem) {
     }
     window.addEventListener('resize',this.block_height.bind(this));
 };
-ImageBox.prototype.show_box_image = function (elem,n) {// не используется
+// не используется
+ImageBox.prototype.show_box_image = function (elem,n) {
     this.image_big = this.search_box.querySelectorAll('['+this.data_big+']');
     this.image_big[0].setAttribute('src',elem.getAttribute(this.data_tumb));
     this.image_big[0].setAttribute(''+this.data_big+'',n);
@@ -126,7 +127,8 @@ ImageBox.prototype.show_box_image = function (elem,n) {// не использу�
         this.images_tumb[i].classList.remove('tumb-active');
     }
     elem.classList.add('tumb-active');
-};// не используется
+};
+// не используется
 ImageBox.prototype.show_slider = function (e,elem) {
     this.image_big_fill();
     var selector ='';

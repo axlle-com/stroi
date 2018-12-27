@@ -121,7 +121,7 @@ use common\components\Common;
 <?$this->endCache(); endif;?>
 <div class="widget">
     <ul class="left-baner">
-        <li><a href="/skidki/banya-v-podarok.htm"><p class="bani_left">Лимитированная акция <strong>Баня в подарок</strong></p></a></li>
+        <li><a href="/skidki/skidka-na-doma-i-bani-iz-brevna-bolshogo-diametra.htm"><p class="bani_left">Скидка на дома и бани <strong>из бревна большого диаметра</strong></p></a></li>
         <li><a href="/vopros-otvet/stroite-li-vy-doma-na-materinskij-kapital.htm"><p class="mat_cap_left">Работаем с материнским капиталом</p></a></li>
     </ul>
 

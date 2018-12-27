@@ -33,9 +33,9 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'watermark')->dropDownList([
-        '0' => 'Нет',
-        '1' => 'Да',
         '2' => 'Аналог',
+        '1' => 'Да',
+        '0' => 'Нет',
     ]);
     ?>
 
@@ -46,8 +46,9 @@ use yii\helpers\ArrayHelper;
     ?>
 
     <?= $form->field($model, 'tumb_img')->dropDownList([
-        '0' => 'Нет',
         '1' => 'Да',
+        '0' => 'Нет',
+
     ]);
     ?>
 

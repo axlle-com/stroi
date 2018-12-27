@@ -24,7 +24,7 @@ AppAssetHome::register($this);
     <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="wCjd8Y4kqNjUZFnlWrsqH4ZUFPdkLyOkKglNbDRy2js" />
-    <meta name="yandex-verification" content="02353d86ec0a738f" />
+    <meta name="yandex-verification" content="bc2f777ca9c7edf9" />
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">

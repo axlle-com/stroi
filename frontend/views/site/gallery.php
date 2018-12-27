@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- content --><?$this->endCache(); endif;?>
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
             <aside class="col-md-3 col-md-pull-9 sidebar">
-                <? echo $this->render("//inc/leftCat") ?>
+                <? echo $this->render("//inc/leftBan") ?>
             </aside>
         </div><!-- End .row -->
 

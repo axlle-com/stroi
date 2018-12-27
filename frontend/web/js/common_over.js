@@ -586,8 +586,45 @@ GetAnimation.prototype.scroll = function () {
         }
     }
 };
-
+function MyTube(box) {
+    this.box = box;
+}
+MyTube.prototype.check_vis = function (el) {
+    if(!el.classList.contains('active')) {
+        var parentNode = el.parentNode;
+        var size = parentNode.getBoundingClientRect();
+        var top = size.top;
+        var bottom = size.bottom;
+        var height = size.height;
+        return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+    }
+};
+MyTube.prototype.add_event = function () {
+    if(this.box) {
+        var self = this;
+        function myScroll() {
+            if(self.check_vis(self.box)){
+                self.box.classList.add('active');
+                self.box.innerHTML = '<div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-xrUxsuuFPU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div><div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-WKBPSBBvfY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>';
+                window.removeEventListener("scroll", myScroll);
+            }
+        }
+        window.addEventListener("scroll", myScroll);
+    }
+};
+MyTube.prototype.scroll = function () {
+        if(this.check_vis(this.box)){
+            this.box.classList.add('active');
+            this.box.innerHTML = '<div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-xrUxsuuFPU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div><div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-WKBPSBBvfY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>';
+        }
+};
 function common() {
+    var axlle = document.querySelector('#axlle');
+    axlle.parentNode.removeChild(axlle);
+
+    var myTube = new MyTube(document.querySelector('#youtube'));
+    myTube.add_event();
+
     var getAnimation = new GetAnimation();
     getAnimation.get_box();
 
@@ -599,8 +636,8 @@ function common() {
     footer.start();
 
 
-    var hot_price = new HotPrice('#hot-price');
-    hot_price.start();
+    //var hot_price = new HotPrice('#hot-price');
+    //hot_price.start();
 
     var srbstr = new MyCookie('srbstr',1,{path:'/'});
     if(srbstr.get_cookie() == 1){}else {srbstr.set_cookie();}

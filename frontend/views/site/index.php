@@ -65,9 +65,9 @@ $images = Common::getSlider()['images'];
             </div><!-- End .col-sm-4 -->
             <div class="col-lg-6 bg-custom2 ban_rev2">
                 <div class="colored-box">
-                    <h3>Баня в подарок</h3>
-                    <p>ООО «Сруб-Строй» рада сообщить прекрасную новость. Теперь при заказе дома на сумму от 1 млн. рублей можно получить баню в подарок.</p>
-                    <a href="/skidki/banya-v-podarok.htm" class="btn btn-default btn-border no-radius">Подробней</a>
+                    <h3>Скидка на дома и бани из бревна большого диаметра</h3>
+                    <p>Наша компания рада сообщить любителям сооружений из бревна диаметром 30-40 см, что теперь предоставляется скидка 12%</p>
+                    <a href="/skidki/skidka-na-doma-i-bani-iz-brevna-bolshogo-diametra.htm" class="btn btn-default btn-border no-radius">Подробней</a>
                 </div><!-- End .colored-box -->
             </div><!-- End .col-sm-4 -->
         </div><!-- End .row -->
@@ -165,16 +165,9 @@ $images = Common::getSlider()['images'];
                         <p>Перед строительством каждое бревно проходит многоэтапную подготовку, в процессе которой сохраняется естественная устойчивость к различным факторам.</p>
                     </div>
                 </div>
-                <div class="col-md-6 mb40">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-xrUxsuuFPU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div><!-- End .embed-responsive -->
-                </div><!-- End .col-md-6 -->
-                <div class="col-md-6 mb40">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-WKBPSBBvfY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div><!-- End .embed-responsive -->
-                </div><!-- End .col-md-6 -->
+                <div id="youtube">
+                    
+                </div>
             </div><!-- End .row -->
         </div><!-- End .container -->
     </div><!-- End .bg-dark -->
@@ -216,13 +209,11 @@ $images = Common::getSlider()['images'];
             </div><!-- End .row -->
         </div><!-- End .container -->
     </div><!-- End .bg-dark -->
-
     <div class="no-overflow pt70">
         <div class="container ">
             <h2 class="title-underblock custom text-uppercase text-center mb50">Последние новости</h2>
         </div>
     </div>
-
     <div id="latest-posts" class="container mb50">
         <div class="home-blogposts-carousel owl-carousel nav-border center-nav center-nav-animate no-radius custom-news-carousel" data-owl-carousel="entry-box" data-responsive="3-3-2-1">
             <?foreach(Common::getNews([11,12,15],1) as $row){?>
@@ -256,7 +247,36 @@ $images = Common::getSlider()['images'];
             <?}?>
         </div>
     </div>
-    <div class="callout custom no-border mb0">
+    <div class="bg-dark pb70 custom-gallery">
+        <div class="no-overflow pt50">
+            <div class="container ">
+                <h2 class="title-underblock custom text-uppercase text-center mb50">Наши работы</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="home-blogposts-carousel owl-carousel nav-border center-nav center-nav-animate no-radius custom-news-carousel" data-owl-carousel="entry-box" data-responsive="3-3-2-1">
+                <?foreach(Common::getNews([21],1) as $row){?>
+
+                    <article class="entry entry-box">
+                        <div class="entry-media">
+                            <figure>
+                                <a href="<?=Common::createdLink($row)?>">
+                                    <?if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
+                                    {?>
+                                        <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="Фото-<?=$row->title_short?>">
+                                    <?}?>
+                                </a>
+                            </figure>
+                        </div><!-- End .entry-media -->
+                    </article>
+                <?}?>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="callout custom no-border mb0">
             <div class="mb5"></div><!-- space -->
             <div class="container">
                 <div class="callout-wrapper">

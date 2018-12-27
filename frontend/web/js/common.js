@@ -9,7 +9,9 @@ HomeSlider.prototype.item = function () {
 };
 HomeSlider.prototype.load = function () {
     this.item();
+    var self = this;
     if(this.items){
+        //this.items[0].addEventListener('load',this.item_active.bind(this));
         this.items[0].onload = this.item_active();
     }
 };
@@ -18,6 +20,7 @@ HomeSlider.prototype.item_active = function () {
         this.items[i].classList.remove('item-vis');
     }
     this.items[0].classList.add('active');
+    return true;
 };
 
 function ToTop(id) {

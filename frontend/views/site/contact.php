@@ -48,11 +48,11 @@ $this->registerJsFile('/js/map.js');
                         <p>Уважаемые застройщики, задать нам вопросы по поводу строительства рубленных домов и бань, сделать заказ Вы можете, позвонив по телефонам или отправить сообщение через форму, находящуюся ниже на странице:</p>
                         <ul class="fa-ul">
                             <li><i class="fa fa-address-card-o" aria-hidden="true"></i><strong>Директор: </strong>Ярыгин Максим Валерьевич</li>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><strong>Телефон моб.: </strong>+7 (915) 91-000-55</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><strong>Телефон моб.(WhatsApp,Viber): </strong>+7 (915) 91-000-55</li>
                         </ul>
                         <ul class="fa-ul">
                             <li><i class="fa fa-address-card-o" aria-hidden="true"></i><strong>Инженер по строительству: </strong>Соболев Александр Юрьевич</li>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><strong>Телефон: </strong>+7 (905) 530-02-20, +7 (495) 997 10 78 (Заключение договоров, приемка объектов, консультации и курирование строительства на объектах, сметчик.)</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><strong>Телефон: </strong>+7 (495) 997 10 78 (Заключение договоров, приемка объектов, консультации и курирование строительства на объектах, сметчик.)</li>
                         </ul>
                         <div class="custom-info-block">
                             <div class="info-label"><i class="fa fa-calendar" aria-hidden="true"></i></div>

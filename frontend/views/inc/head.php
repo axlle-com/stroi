@@ -34,13 +34,14 @@ $request_page = Yii::$app->request->get('page');
             <div class="container">
                 <div class="pull-left clearfix">
                     <ul class="phone">
-                        <li><i class="fa fa-phone"aria-hidden="true"></i><span data-company-tel="1"> +7 (915) 91 000 55</span></li>
-                        <li><i class="fa fa-fax" aria-hidden="true"></i><span data-company-tel="2"> +7 (495) 997 10 78</span></li>
+                        <li><i class="fa fa-phone-square" aria-hidden="true"></i><a href="tel:+79159100055"> +7 (915) 91 000 55</a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><span data-company-tel="2"><a href="tel:+74959971078"> +7 (495) 997 10 78</a></span></li>
                     </ul>
                 </div><!-- End .pull-left -->
 
                 <div class="pull-right">
                     <ul class="social pull-right hidden-xs">
+                        <li class="whatsapp"><span class="hidden-link" data-link="https://api.whatsapp.com/send?phone=79159100055"><i class="fa fa-whatsapp" aria-hidden="true"></i></span></li>
                         <li class="vk"><span class="hidden-link" data-link="https://vk.com/club142581712"><i class="fa fa-vk" aria-hidden="true"></i></span></li>
                         <li class="instagram"><span class="hidden-link" data-link="https://www.instagram.com/srub_stroi/"><i class="fa fa-instagram" aria-hidden="true"></i></span></li>
                         <li class="odnoklassniki"><span class="hidden-link" data-link="https://ok.ru/srubstroy"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></span></li>
@@ -48,7 +49,7 @@ $request_page = Yii::$app->request->get('page');
                         <li class="youtube"><span class="hidden-link" data-link="https://www.youtube.com/channel/UCFxN1jZRwXW5qmWOjxEiMtw"><i class="fa fa-youtube" aria-hidden="true"></i></span></li>
                     </ul>
                     <div class="mail pull-right clearfix">
-                        <a id="info_mail"><i class="fa fa-envelope" aria-hidden="true"></i><span data-company-mail="1">  info@srub-stroi.ru</span></a>
+                        <i class="fa fa-envelope" aria-hidden="true"></i><span data-company-mail="1"><a id="info_mail" href="mailto:info@srub-stroi.ru"> info@srub-stroi.ru</a></span>
                     </div><!-- End. phone -->
 
                 </div><!-- End .pull-right -->
@@ -105,31 +106,6 @@ $request_page = Yii::$app->request->get('page');
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <?foreach (Common::getTopNav(3) as $row)
-                            {
-                                if($request_alias == $row['alias_category'])
-                                {
-                                    $active_5 = 'active';
-                                    break;
-                                }else{
-                                    $active_5 ='';
-                                }
-                            }?>
-                            <a class="dropdown-toggle <?=$active_5?>" data-toggle="dropdown" role="button" aria-expanded="false">Технологии<span class="angle"></span></a>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(3) as $row)
-                                {
-                                    if($row['alias_category'] == $request_alias && ($request_item || $request_tags || $request_page)){?>
-                                        <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}elseif($row['alias_category'] == $request_alias && !$request_item && !$request_tags && !$request_page){?>
-                                        <li class="active"><a><?=$row['title_short']?></a></li>
-                                    <?}else{?>
-                                        <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}
-                                }?>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
                             <?if($request_alias == 'price')
                             {
                                 $active_4 = 'active';
@@ -175,6 +151,11 @@ $request_page = Yii::$app->request->get('page');
                                 }?>
                             </ul>
                         </li>
+                            <?if($request_alias == 'gallery' ){?>
+                                <li><a class="active">Галерея</a></li>
+                            <?}else{?>
+                                <li><a href="<?= Url::to(['/gallery']);?>">Галерея</a></li>
+                            <?}?>
                             <?if($request_alias == 'otzyvy' ){?>
                                 <li><a class="active">Отзывы</a></li>
                             <?}else{?>

@@ -313,7 +313,7 @@ class SiteController extends Controller
         {
             $query = Reviews::find()->where(['category_id' => $category->id])->orderBy(['data'=>SORT_DESC]);
         }
-        elseif($category->render->name == 'blog' || $category->render->name == 'service')
+        elseif($category->render->name == 'blog' || $category->render->name == 'service' || $category->render->name == 'gallery')
         {
             $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->orderBy(['date_pub'=>SORT_DESC]);
         }elseif ($category->render->name == 'favorite'){
