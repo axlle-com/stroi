@@ -36,8 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'duration' => 0,
             ])):?>
             <div class="col-md-9 col-md-push-3">
-
-                <div class="row"><div class="col-md-12"><h1 id="sort" class="title-underblock custom"><?=$title?></h1></div></div>
+                <div class="heading-block page-wrapper" itemscope itemtype="http://schema.org/Product">
+                    <div class="row"><div class="col-md-12"><h1 id="sort" class="title-underblock custom" itemprop="name"><?=$title?></h1></div></div>
+                    <div itemprop="description" style="display: none"><?=$description_seo?></div>
+                    <div itemtype="http://schema.org/AggregateOffer" itemscope="" itemprop="offers" style="display: none">
+                        <meta content="<?= $max ?>" itemprop="highPrice"><!-- Высшая цена -->
+                        <meta content="<?= $min ?>" itemprop="lowPrice"><!-- Низшая цена -->
+                        <meta content="RUB" itemprop="priceCurrency"><!-- Валюта -->
+                    </div>
+                </div>
                 <?
                     $alias_category = Yii::$app->request->get(trim('alias_category'));
                     $request_tags = Yii::$app->request->get(trim('alias_tags'));
@@ -204,7 +211,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?}?>
                 <?if($description){?>
                     <div class="category-details-container">
-                        <p><?=$description?></p>
+                        <div><?=$description?></div>
                     </div>
                 <?}else{}?>
             </div><!-- End .col-md-9 -->

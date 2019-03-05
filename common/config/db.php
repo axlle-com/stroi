@@ -1,6 +1,6 @@
 <?
 
-        return  [
+    return  [
         'class' => 'yii\db\Connection',
         'dsn' => 'mysql:host=localhost; dbname=srub',
         'username' => 'root',

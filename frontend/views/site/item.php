@@ -24,7 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     'duration' => 0,
                 ])):?>
                 <div class="row">
-                    <div class="col-md-12"><h1 class="title-underblock custom"><?=$model['title']?></h1></div>
+                    <div itemscope itemtype="http://schema.org/Product">
+                        <div class="col-md-12"><h1 class="title-underblock custom" itemprop="name"><?=$model['title']?></h1></div>
+                        <img src="<?=Url::home('https')?>/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=Common::showGeneralImage($model)[0]?>" alt="Фото-<?=$model->title?>" style="display: none" itemprop="image"/>
+                        <div itemprop="description" style="display: none"><?=$model->description_seo?></div>
+                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <meta itemprop="price" content="<?=Common::getSalePrice($model,'');?>">
+                            <meta itemprop="priceCurrency" content="RUB">
+                        </div>
+                    </div>
                     <div class="col-sm-8">
                         <div class="item-image-box popup-gallery">
                             <div class="product-top">

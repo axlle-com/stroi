@@ -308,6 +308,7 @@ class SiteController extends Controller
         //Common::getHitSb();
         //Common::getHotPrice();
         //Common::getDesc();
+        //Common::getMyMetaTeg();
         $category_name = Category::findOne($category->parent_id)->title;
         if($category->render->name == 'reviews')
         {
@@ -330,6 +331,16 @@ class SiteController extends Controller
             }
 
         }else{
+            $itemPrice = Item::find()->alias('i')
+                ->select('MIN(d.original_price) AS min_price, MAX(d.original_price) AS max_price')
+                ->andWhere(['i.category_id' => $category->id])
+                ->andWhere(['sitemap' => 1])
+                ->joinWith('details as d')
+                ->asArray()->one();
+            $max = $itemPrice['max_price'];
+            $max = Common::getShemaPrice($max,'');
+            $min = $itemPrice['min_price'];
+            $min = Common::getShemaPrice($min,'');
             if($sort) {
                 if ($sort == 'price-desc') {
                     $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['original_price' => SORT_DESC]);//->with(['category'])
@@ -358,6 +369,8 @@ class SiteController extends Controller
             'pages' => $pages,
             'pages_size' => $pages_size,
             'category_name' => $category_name,
+            'max' => $max,
+            'min' => $min,
         ]);
     }
 
@@ -375,15 +388,36 @@ class SiteController extends Controller
                 $r[] = $row->id;
             }
         }
-
+        $itemPrice = Item::find()->alias('i')
+            ->select('MIN(d.original_price) AS min_price, MAX(d.original_price) AS max_price')
+            ->andWhere(['i.id' => $r])
+            ->andWhere(['sitemap' => 1])
+            ->joinWith('details as d')
+            ->asArray()->one();
+        $max = $itemPrice['max_price'];
+        $max = Common::getShemaPrice($max,'');
+        $min = $itemPrice['min_price'];
+        $min = Common::getShemaPrice($min,'');
         if($sort){
             if($sort == 'price-desc'){
-                $query = Item::find()->where(['id' => $r])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_DESC]);;//->with(['category'])
+                $query = Item::find()->alias('i')
+                    ->where(['i.id' => $r])
+                    ->andWhere(['sitemap' => 1])
+                    ->joinWith('details as d')
+                    ->orderBy(['d.original_price'=>SORT_DESC]);//->with(['category'])
             }else{
-                $query = Item::find()->where(['id' => $r])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
+                $query = Item::find()->alias('i')
+                    ->where(['i.id' => $r])
+                    ->andWhere(['sitemap' => 1])
+                    ->joinWith('details as d')
+                    ->orderBy(['d.original_price'=>SORT_ASC]);
             }
         }else{
-            $query = Item::find()->where(['id' => $r])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
+            $query = Item::find()->alias('i')
+                ->where(['i.id' => $r])
+                ->andWhere(['sitemap' => 1])
+                ->joinWith('details as d')
+                ->orderBy(['d.original_price'=>SORT_ASC]);
         }
         $items_count = clone $query;//count($category->items);
         $pages = new Pagination(['totalCount' => $items_count->count()]);
@@ -397,6 +431,8 @@ class SiteController extends Controller
             'category' => $category,
             'pages' => $pages,
             'pages_size' => $pages_size,
+            'max' => $max,
+            'min' => $min,
             //'category_name' => $category_name,
         ]);
     }

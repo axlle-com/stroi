@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?}?>
                             </span>
 
-                            <h2 class="entry-title">От застройщика</h2>
+                            <h2 class="entry-title"><?=$row->title?></h2>
                             <ul>
                                 <?if($row->name){?>
                                     <li><i class="fa fa-address-card-o" aria-hidden="true"></i><?=$row->name?></li>

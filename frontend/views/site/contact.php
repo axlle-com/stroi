@@ -42,6 +42,19 @@ $this->registerJsFile('/js/map.js');
         <div class="col-md-9 col-md-push-3">
             <article class="price-one">
                 <h1 class="title-underblock custom"><?=$category->title?></h1>
+
+                <div itemscope itemtype="http://schema.org/Organization" style="display: none">
+                    <span itemprop="name">ООО "Сруб-Строй"</span>
+                    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="streetAddress">ул. Коммунистическая, д.25Г</span>
+                        <span itemprop="postalCode">117623</span>
+                        <span itemprop="addressLocality">Москва</span>
+                    </div>
+                    <span itemprop="telephone">+7 (915) 91-000-55</span>
+                    <span itemprop="faxNumber">+7 (495) 997-10-78</span>
+                    <span itemprop="email">info@srub-stroi.ru</span>
+                </div>
+
                 <div class="entry-content">
                     <div class="blog-content">
 
@@ -67,9 +80,10 @@ $this->registerJsFile('/js/map.js');
                         </div>
 
                         <ul class="fa-ul">
-                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Производство: </strong>Костромская область, г. Чухлома.</li>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Производство: </strong>Костромская область, Чухломской район, д.Зубарёво, строение 9. Телефон: +7(910)955 10 32</li>
                             <li><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Адрес офиса: </strong>г. Москва, ул. Коммунистическая, д.25Г (предварительная запись).</li>
                             <li><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Адрес офиса: </strong>г. Мытищи, ул. Ярославское шоссе, территория Тракт-терминала (предварительная запись).</li>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Адрес офиса: </strong>г. Кострома, ул. 2-я Волжская,д.8, оф.17.Телефон: +7(905)530 02 20</li>
                         </ul>
                     </div>
                 </div>

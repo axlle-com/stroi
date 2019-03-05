@@ -65,7 +65,7 @@ $request_page = Yii::$app->request->get('page');
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand text-uppercase" href="/" title="ООО 'Сруб-Строй' Строительство деревянных домов и бань"><img src="/images/backgrounds/log_2.png" class="img-responsive img-logo"></a>
+                    <a class="navbar-brand text-uppercase" href="/" title="ООО 'Сруб-Строй' Строительство деревянных домов и бань"><img src="/images/backgrounds/log_2.png" class="img-responsive img-logo" alt="Логотип"></a>
 
 
                     <button type="button" class="navbar-btn btn-icon pull-right last visible-sm visible-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
