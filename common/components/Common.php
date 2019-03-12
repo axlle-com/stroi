@@ -589,12 +589,12 @@ class Common extends Component{
             'images' => $images,
         ];
     }
-    public static function getNews($data,$sort = 1)
+    public static function getNews($data,$sort = 1,$limit = 7)
     {
         if($sort == 1){
-            $items = Item::find()->where(['in', 'category_id', $data]) ->andWhere(['sitemap' => 1])->limit(7)->orderBy(['date_pub'=>SORT_DESC])->all();
+            $items = Item::find()->where(['in', 'category_id', $data]) ->andWhere(['sitemap' => 1])->limit($limit)->orderBy(['date_pub'=>SORT_DESC])->all();
         }else{
-            $items = Item::find()->where(['in', 'category_id', $data]) ->andWhere(['sitemap' => 1])->limit(7)->orderBy(['hits'=>SORT_DESC])->all();
+            $items = Item::find()->where(['in', 'category_id', $data]) ->andWhere(['sitemap' => 1])->limit($limit)->orderBy(['hits'=>SORT_DESC])->all();
         }
         return $items;
     }

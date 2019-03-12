@@ -303,7 +303,7 @@ p.mat_cap_left:hover{
     padding: 3px 5px;
     border: none;
     color: #505050;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 .ban_rev2{
     border: 1px solid #3c3c3c;
@@ -1546,6 +1546,12 @@ a.custom-link{
 address ul.phone li{
     margin-bottom: 8px;
 }
+.social-icon{
+    margin: 0 10px 0;
+}
+.corporate-widget .social-icons-label {
+    margin: 15px 0 13px;
+}
 /*-//--footer---*/
 .breadcrumb > li + li:before{
     padding: 0px;
@@ -1615,7 +1621,7 @@ header .phone li{
     border-color: transparent;
 }
 .main-widget{
-    min-height:510px;
+    min-height:465px;
 }
 .navbar-top {
     font: 600 18px/38px Play,Verdana;

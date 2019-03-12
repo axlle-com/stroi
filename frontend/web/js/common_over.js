@@ -605,7 +605,14 @@ MyTube.prototype.add_event = function () {
         function myScroll() {
             if(self.check_vis(self.box)){
                 self.box.classList.add('active');
-                self.box.innerHTML = '<div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-xrUxsuuFPU?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div><div class="col-md-6 mb40"><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-WKBPSBBvfY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></div>';
+                self.box.innerHTML = '<div class="col-md-6 mb40">' +
+                    '<div class="embed-responsive embed-responsive-16by9">' +
+                    '<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/-WKBPSBBvfY?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                    '</div></div>' +
+                    '<div class="col-md-6 mb40">' +
+                    '<div class="embed-responsive embed-responsive-16by9">' +
+                    '<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/uUOQ_gcsClM?start=6" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                    '</div></div>';
                 window.removeEventListener("scroll", myScroll);
             }
         }

@@ -61,8 +61,8 @@ use common\components\Common;
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified tab-title" role="tablist">
-            <li role="presentation" class="active"><a href="#description1" aria-controls="description5" role="tab" data-toggle="tab">Новое</a></li>
-            <li role="presentation"><a href="#description2" aria-controls="profile5" role="tab" data-toggle="tab">Популярное</a></li>
+            <li role="presentation" class="active"><a href="#description1" aria-controls="description1" role="tab" data-toggle="tab">Новое</a></li>
+            <li role="presentation"><a href="#description2" aria-controls="description2" role="tab" data-toggle="tab">Популярное</a></li>
         </ul>
         <!-- Tab Panes -->
         <div class="tab-content">

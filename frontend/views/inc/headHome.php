@@ -11,7 +11,7 @@ use common\components\Common;
 ?>
 <!-- Header Starts -->
 
-<header id="header" role="banner">
+<header id="header">
     <div class="collapse navbar-white" id="header-search-form">
         <div class="ya-site-form ya-site-form_inited_no" onclick="return {'action':'http://www.srub-stroi.ru/search.htm','arrow':false,'bg':'transparent','fontsize':12,'fg':'#000000','language':'ru','logo':'rb','publicname':'Поиск по www.srub-stroi.ru','suggest':true,'target':'_self','tld':'ru','type':3,'usebigdictionary':true,'searchid':2303785,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':null,'input_placeholderColor':'#000000','input_borderColor':'#7f9db9'}">
             <form class="navbar-form animated fadeInDown" action="https://yandex.ru/search/site/" method="get" target="_self" accept-charset="utf-8">
@@ -23,7 +23,7 @@ use common\components\Common;
             </form>
         </div><!-- End .container -->
     </div><!-- End #header-search-form -->
-    <nav class="navbar navbar-white navbar-transparent animated-dropdown ttb-dropdown" role="navigation">
+    <nav class="navbar navbar-white navbar-transparent animated-dropdown ttb-dropdown">
         <div class="navbar-top clearfix">
             <div class="container">
                 <div class="pull-left clearfix">

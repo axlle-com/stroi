@@ -146,7 +146,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
         </div>
-        <aside class="col-md-3 col-md-pull-9 sidebar" role="complementary"  >
+        <aside class="col-md-3 col-md-pull-9 sidebar">
             <? echo $this->render("//inc/leftBlog") ?>
         </aside><!-- End .col-md-3 -->
     </div><!-- End .row -->

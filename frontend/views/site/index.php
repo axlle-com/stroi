@@ -257,7 +257,7 @@ $images = Common::getSlider()['images'];
             <div class="home-blogposts-carousel owl-carousel nav-border center-nav center-nav-animate no-radius custom-news-carousel" data-owl-carousel="entry-box" data-responsive="3-3-2-1">
                 <?foreach(Common::getNews([21],1) as $row){?>
 
-                    <article class="entry entry-box">
+                    <div class="entry entry-box">
                         <div class="entry-media">
                             <figure>
                                 <a href="<?=Common::createdLink($row)?>">
@@ -268,7 +268,7 @@ $images = Common::getSlider()['images'];
                                 </a>
                             </figure>
                         </div><!-- End .entry-media -->
-                    </article>
+                    </div>
                 <?}?>
             </div>
         </div>
