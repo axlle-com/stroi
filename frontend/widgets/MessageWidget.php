@@ -35,10 +35,10 @@ class MessageWidget extends  Widget{
             }
             $cookie = $_COOKIE['srbstr'];
             $cookie = (int)$cookie;
-            if ($cookie && Common::getBlack(Yii::$app->request->userIP,$model->name,$model->phone,$model->email,$model->body) && \Yii::$app->common->sendMail($model->subject,$body,$name)) {
+            if ($cookie && \Yii::$app->common->sendMail($model->subject,$body,$name)) {
                 Yii::$app->session->setFlash('successMessage', 'Спасибо. Ваше сообщение отправлено');
             } else {
-                Yii::$app->session->setFlash('errorMessage', 'Произошла ошибка.Ваше сообщение не отправлено.!');
+                Yii::$app->session->setFlash('errorMessage', 'Произошла ошибка.Ваше сообщение не отправлено..!');
             }
         }
         return $this->render('message', [

@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?if($img = Common::showGeneralImage($model)[0])
                             {?>
                                 <div data-big="0" class="box-image image-active">
-                                    <img  class="img-responsive" src="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" alt="Фото-<?=$model->title?>"/>
+                                    <img  class="img-responsive" src="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" alt="<?=$model->title?> Фото-1"/>
                                 </div>
                                 <span class="control-left box-gallery-control" data-box-slide="prev"><i class="fa fa-angle-left"></i></span>
                                 <span class="control-right box-gallery-control" data-box-slide="next"><i class="fa fa-angle-right"></i></span>
@@ -52,15 +52,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="tumb-gallery">
                             <? $img_gal = Common::showGalleryImage($model);?>
                             <?if($img_gal){?>
-                                <?sort($img_gal)?>
+                                <?sort($img_gal);$count = count($img_gal); ?>
                                 <div class="item-box-gallery">
-                                    <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" data-title="<?=$model['title']?>" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/tumb_<?=$img?>')"></span>
+                                    <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" data-title="<?=$model['title']?> Фото-1" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/tumb_<?=$img?>')"></span>
                                 </div>
-                                <?foreach($img_gal as $row):?>
+                                <? $cnt = 2;foreach($img_gal as $row):?>
                                     <div class="item-box-gallery">
-                                        <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/<?=$row?>" data-title="<?=$model['title']?>" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/tumb_<?=$row?>')"></span>
+                                        <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/<?=$row?>" data-title="<?=$model['title']?> Фото-<?=$cnt?>" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/tumb_<?=$row?>')"></span>
                                     </div>
-                                <?endforeach;?>
+                                <?$cnt++;endforeach;?>
                             <?}?>
                         </div>
                     </div><!-- End .product-gallery-container -->

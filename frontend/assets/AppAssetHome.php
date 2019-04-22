@@ -17,8 +17,8 @@ class AppAssetHome extends AssetBundle
         //'css/style.css',
         'css/style.min.css',
         'css/colors/green2.css',
-        'css/templ.css',
-        //'css/templ.min.css',
+        //'css/templ.css',
+        'css/templ.min.css',
     ];
     public $js = [
         /*'js/modernizr.js',

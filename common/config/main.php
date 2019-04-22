@@ -16,10 +16,6 @@ return [
             'showScriptName' => false,
             'suffix' => '.htm',
             'rules' => [
-                //'<action:login|contact|signup>'=>'site/<action>',
-                //'<action>'=>'site/<action>',
-                //'<alias:[\w_-]+>'=>'site/category',
-                //'<alias:[\w_-]+>/<alias:[\w_-]+>'=>'site/item',
                 '' => 'site/index',
 
 
@@ -40,10 +36,22 @@ return [
                 'port'       => '465',
                 'smtpsecure' => 'ssl',
                 'smtpauth'   => true,
-                'username'   => 'www@srub-stroi.ru',
-                'password'   => '19*8i9h5',
+                'username'   => 'web@srub-stroi.ru',
+                'password'   => '',
                 'ishtml' => true,
                 'charset' => 'UTF-8',
+            ],
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.beget.com',
+                'username' => 'web@srub-stroi.ru',
+                'password' => '',
+                'port' => '465',
+                'encryption' => 'ssl',
             ],
         ],
     ],

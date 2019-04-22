@@ -68,7 +68,7 @@ return [
                     'class'=>'frontend\filters\UrlMyRule'
                 ],
                 '<action:cashes>'=>'site/<action>',
-                '<action:search|captcha>'=>'site/<action>',
+                '<action:search|captcha|signup>'=>'site/<action>',
 
                 //'<action:about>'=>'site/<action>',
                 '<alias_category:[\w_-]+>/Page-<page:\d+>' => 'site/category',

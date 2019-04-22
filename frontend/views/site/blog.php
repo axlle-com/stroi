@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?}?>
                 <?if($description){?>
                     <div class="category-details-container">
-                        <p><?=$description?></p>
+                        <?=$description?>
                     </div>
                 <?}else{}?>
             </div><!-- End .col-md-9 -->

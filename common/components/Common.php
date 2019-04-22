@@ -222,15 +222,29 @@ class Common extends Component{
         catch(\yii\base\Exception $e){}
         return (['model' => $model,'image' => $image, 'images_add' => $images_add,'title' => $title]);
     }
-    public function sendMail($subject,$text,$emailFrom='mail@srub-stroi.ru',$nameFrom='ООО "Сруб-Строй"'){
+    public function sendMail($subject,$text){
         if(\Yii::$app->mail->compose()
-            ->setFrom(['www@srub-stroi.ru' => 'Сообщение с сайта'])
-            ->setTo([$emailFrom => $nameFrom])
+            ->setFrom(['web@srub-stroi.ru' => 'Сообщение с сайта'])
+            ->setTo(['mail@srub-stroi.ru' => 'ООО "Сруб-Строй"'])
             ->setSubject($subject)
             ->setHtmlBody($text)
             ->send()){
             return true;
         }
+        return false;
+    }
+
+    public function contact($subject,$text)
+    {
+        if (Yii::$app->mailer->compose()
+                ->setTo('mail@srub-stroi.ru')
+                ->setFrom(['web@srub-stroi.ru' => 'Сообщение с сайта'])
+                ->setSubject($subject)
+                ->setTextBody($text)
+                ->send()) {
+            return true;
+        }
+        return false;
     }
     public function notifyAdmin($event){
 

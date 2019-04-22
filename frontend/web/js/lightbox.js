@@ -3,6 +3,7 @@ function ImageBox(selector_block) {
     this.image_big_selector = '.product-top';//.product-top || #box_lightbox
     this.selector_lightbox = 0;// 1 || 0
     this.data_tumb = 'data-tumb';//атрибут маленьких изображений по которому ищем их
+    this.data_title = 'data-title';//атрибут маленьких изображений title
     this.data_big = 'data-big';//атрибут изображений в главном окне по которому ищем их
     this.images_tumb = [];//коллекция всех маленьких картинок
     this.image_big = [];//коллекция всех div больших картинок на странице товара
@@ -194,6 +195,7 @@ ImageBox.prototype.show_big_image = function (e,box,elem,n,selector) {
 
             var image = document.createElement('img');
             image.setAttribute('src',elem.getAttribute(this.data_tumb));
+            image.setAttribute('alt',elem.getAttribute(this.data_title));
             image.classList.add('img-responsive');
             div_clone.appendChild(image);
             //div_clone.classList.add('image-active');

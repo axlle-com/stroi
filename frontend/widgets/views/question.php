@@ -71,7 +71,7 @@ use yii\captcha\Captcha;
         ])
         ?>
         <div class="sky-form"><? echo $form->field($model, 'agreement')->checkbox([
-                'label' => '<i></i>Согласен на обработку персональных данных</a>',
+                'label' => '<i></i>Согласен на обработку персональных данных',
                 'labelOptions' => [
                     'class' => 'checkbox'
                 ],
