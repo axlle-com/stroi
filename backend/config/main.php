@@ -44,6 +44,8 @@ return [
             'showScriptName' => false,
             'suffix' => '',
             'rules' => [
+                ''=> 'site/index',
+                '<action>'=>'site/<action>',
             ],
         ],
         'urlManagerFrontend' => [
@@ -77,6 +79,16 @@ return [
             ],
         ],*/
 
+    ],
+    'as access' => [
+        'class' => 'yii\filters\AccessControl',
+        'except' => ['site/login', 'site/error','site/captcha'],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
     ],
     'params' => $params,
 ];
