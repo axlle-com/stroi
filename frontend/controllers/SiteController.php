@@ -146,6 +146,7 @@ class SiteController extends Controller
             'model' => $model,
             'pages' => $pages,
             'pages_size' => $pages_size,
+            'category' => $category,
         ]);
     }
     /**
@@ -310,13 +311,24 @@ class SiteController extends Controller
         //Common::getDesc();
         //Common::getMyMetaTeg();
         $category_name = Category::findOne($category->parent_id)->title;
+        function Sample($option,$sort,$category){
+            return Item::find()
+                ->where(['category_id' => $category->id])
+                ->andWhere(['sitemap' => 1])
+                ->joinWith(['details'])
+                ->orderBy([$option => $sort]);
+        }
         if($category->render->name == 'reviews')
         {
             $query = Reviews::find()->where(['category_id' => $category->id])->orderBy(['data'=>SORT_DESC]);
         }
         elseif($category->render->name == 'blog' || $category->render->name == 'service' || $category->render->name == 'gallery')
         {
-            $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->orderBy(['date_pub'=>SORT_DESC]);
+            $query = Item::find()
+                ->where(['category_id' => $category->id])
+                ->andWhere(['sitemap' => 1])
+                ->orderBy(['date_pub'=>SORT_DESC]);
+
         }elseif ($category->render->name == 'favorite'){
             $cookie = $_COOKIE['srbstrfvrt'];
             $cookie = json_decode($cookie);
@@ -329,7 +341,6 @@ class SiteController extends Controller
             }else{
                 $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
             }
-
         }else{
             $itemPrice = Item::find()->alias('i')
                 ->select('MIN(d.original_price) AS min_price, MAX(d.original_price) AS max_price')
@@ -343,20 +354,20 @@ class SiteController extends Controller
             $min = Common::getShemaPrice($min,'');
             if($sort) {
                 if ($sort == 'price-desc') {
-                    $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['original_price' => SORT_DESC]);//->with(['category'])
+                    $query = Sample('original_price',SORT_DESC,$category);
                 } elseif ($sort == 'square-desc') {
-                    $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['square' => SORT_DESC]);
+                    $query = Sample('square',SORT_DESC,$category);
                 } elseif($sort == 'square-asc'){
-                    $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['square' => SORT_ASC]);
+                    $query = Sample('square',SORT_ASC,$category);
                 }else{
-                    $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['original_price'=>SORT_ASC]);
+                    $query = Sample('original_price',SORT_ASC,$category);
                 }
             }else{
-                $query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->joinWith(['details'])->orderBy(['original_price'=>SORT_ASC]);
+                $query = Sample('original_price',SORT_ASC,$category);
             }
 
         }
-        $items_count = clone $query;//count($category->items);
+        $items_count = clone $query;
         $pages = new Pagination(['totalCount' => $items_count->count()]);
         $pages->setPageSize(12);
         $pages_size = $pages->getPageSize();
@@ -377,16 +388,19 @@ class SiteController extends Controller
     public function actionTags($alias_category,$alias_tags)
     {
         $sort = Yii::$app->request->get(trim('sort'));
-        //$category = Tags::findOne(['alias_category' => $alias_category]);
         $category = Tags::find()->where(['alias_category' => $alias_category])->andWhere(['alias_tags' => $alias_tags])->one();
-        //$query = Item::find()->where(['category_id' => $category->id])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
-        //$query = $category->items;
         $r = [];
-        //$r = $category->items->id;
         if($category){
             foreach ($category->items as $row){
                 $r[] = $row->id;
             }
+        }
+        function Sample($option,$sort,$r){
+            return Item::find()->alias('i')
+                ->where(['i.id' => $r])
+                ->andWhere(['sitemap' => 1])
+                ->joinWith('details as d')
+                ->orderBy([$option => $sort]);
         }
         $itemPrice = Item::find()->alias('i')
             ->select('MIN(d.original_price) AS min_price, MAX(d.original_price) AS max_price')
@@ -400,26 +414,14 @@ class SiteController extends Controller
         $min = Common::getShemaPrice($min,'');
         if($sort){
             if($sort == 'price-desc'){
-                $query = Item::find()->alias('i')
-                    ->where(['i.id' => $r])
-                    ->andWhere(['sitemap' => 1])
-                    ->joinWith('details as d')
-                    ->orderBy(['d.original_price'=>SORT_DESC]);//->with(['category'])
+                $query = Sample('d.original_price',SORT_DESC,$r);
             }else{
-                $query = Item::find()->alias('i')
-                    ->where(['i.id' => $r])
-                    ->andWhere(['sitemap' => 1])
-                    ->joinWith('details as d')
-                    ->orderBy(['d.original_price'=>SORT_ASC]);
+                $query = Sample('d.original_price',SORT_ASC,$r);
             }
         }else{
-            $query = Item::find()->alias('i')
-                ->where(['i.id' => $r])
-                ->andWhere(['sitemap' => 1])
-                ->joinWith('details as d')
-                ->orderBy(['d.original_price'=>SORT_ASC]);
+            $query = Sample('d.original_price',SORT_ASC,$r);
         }
-        $items_count = clone $query;//count($category->items);
+        $items_count = clone $query;
         $pages = new Pagination(['totalCount' => $items_count->count()]);
         $pages->setPageSize(12);
         $pages_size = $pages->getPageSize();
@@ -433,7 +435,6 @@ class SiteController extends Controller
             'pages_size' => $pages_size,
             'max' => $max,
             'min' => $min,
-            //'category_name' => $category_name,
         ]);
     }
 
@@ -457,9 +458,6 @@ class SiteController extends Controller
             //return $this->goBack();
             return \Yii::$app->getResponse()->redirect('/admin')->send();
         }
-
-
-
     }
 
 }

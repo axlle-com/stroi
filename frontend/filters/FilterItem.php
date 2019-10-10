@@ -23,32 +23,35 @@ class FilterItem extends ActionFilter
 
             $model = Common::getTitlePage('item')['model'];
 
-            if($model == null)
+            if($model == null || !$model->sitemap)
             {
                 throw new  HttpException(404,'Материал не найден');
                 return false;
             }
-            elseif (!$model->sitemap)
+            elseif ($model_cat && !$model_cat->sitemap)
             {
-                throw new  HttpException(404,'Материал не найден');
+                throw new  HttpException(404,'Неизвестная категория');
                 return false;
             }
             elseif ($model_cat == null)
             {
                 if($model != null)
                 {
-                    return \Yii::$app->getResponse()->redirect('/'.$model->category->alias_category.'/'.$model->alias_item.'.htm', 301)->send();
+                    if($model->category->sitemap)
+                    {
+                        return \Yii::$app->getResponse()->redirect('/'.$model->category->alias_category.'/'.$model->alias_item.'.htm', 301)->send();
+                    }
+                    elseif (!$model->category->sitemap && $model->category->published)
+                    {
+                        return true;
+                    }
                 }else{
                     throw new  HttpException(404,'Неизвестная категория');
                     return false;
                 }
 
             }
-            elseif (!$model_cat->sitemap)
-            {
-                throw new  HttpException(404,'Неизвестная категория');
-                return false;
-            }
+
 
 
             return parent::beforeAction($action);

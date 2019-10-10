@@ -26,7 +26,8 @@ class FilterCategory extends ActionFilter
         {
             if($item)
             {
-                return \Yii::$app->getResponse()->redirect('/'.$item->category->alias_category.'/'.$item->alias_item.'.htm', 301)->send();
+                return true;
+                //return \Yii::$app->getResponse()->redirect('/'.$item->category->alias_category.'/'.$item->alias_item.'.htm', 301)->send();
             }else{
                 throw new  HttpException(404,'Неизвестная категория');
                 return false;

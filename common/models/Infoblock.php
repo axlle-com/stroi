@@ -43,7 +43,7 @@ class Infoblock extends \yii\db\ActiveRecord
             TimestampBehavior::className(),
         ];
     }
-    public function afterFind()
+    /*public function afterFind()
     {
         if(!$this->purified_text && $this->description)
         {
@@ -53,7 +53,7 @@ class Infoblock extends \yii\db\ActiveRecord
             ]);
         }
         parent::afterFind();
-    }
+    }*/
     public function scenarios(){
         $scenarios = parent::scenarios();
         $scenarios['step2'] = ['general_photo'];
@@ -61,7 +61,7 @@ class Infoblock extends \yii\db\ActiveRecord
         return $scenarios;
     }
 
-    public function afterSave(){
+    public function afterSave($insert, $changedAttributes){
         Yii::$app->locator->cache->set('id_image',$this->id);
     }
     /**

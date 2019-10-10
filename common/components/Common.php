@@ -671,15 +671,26 @@ class Common extends Component{
             $cat_title = $category->title_short;
             return '<div class="page-header custom larger"><div class="container"><div class="row"><div class="col-md-6">
                 <p>'.$cat_title.'</p></div><div class="col-md-6"><ol class="breadcrumb">
-                <li><a href="/">Главная</a></li><li><a href="/'.$alias_category.'.htm">'.$category->title_short.'</a></li>'
+                <li><a href="/">Главная</a></li><li><a href="/'.$alias_category.'.htm">'.$cat_title.'</a></li>'
                 .'<li>'.$item->title.'</li></ol></div></div></div></div>';
-        }elseif ($tags && $category){
+        }
+        elseif ($tags && $category)
+        {
             $cat_title = $category->title_short;
             return '<div class="page-header custom larger"><div class="container"><div class="row"><div class="col-md-6">
                 <p>'.$cat_title.'</p></div><div class="col-md-6"><ol class="breadcrumb">
-                <li><a href="/">Главная</a></li><li><a href="/'.$alias_category.'.htm">'.$category->title_short.'</a></li>'
+                <li><a href="/">Главная</a></li><li><a href="/'.$alias_category.'.htm">'.$cat_title.'</a></li>'
             .'<li>'.$tags->title_short.'</li></ol></div></div></div></div>';
-        }elseif (!$item && $category)
+        }
+        elseif ($item && !$category)
+        {
+            $cat_title = $item->title_short;
+            return '<div class="page-header custom larger"><div class="container"><div class="row"><div class="col-md-6">
+            <p>'.$cat_title.'</p></div><div class="col-md-6"><ol class="breadcrumb">
+            <li><a href="/">Главная</a></li><li>'.$cat_title.'</li></ol></div>
+            </div></div></div>';
+        }
+        elseif (!$item && $category)
         {
             if($id = $category->parent_id)
             {
@@ -690,7 +701,7 @@ class Common extends Component{
             }
             return '<div class="page-header custom larger"><div class="container"><div class="row"><div class="col-md-6">
             <p>'.$cat_title.'</p></div><div class="col-md-6"><ol class="breadcrumb">
-            <li><a href="/">Главная</a></li><li>'.$category->title_short.'</li></ol></div>
+            <li><a href="/">Главная</a></li><li>'.$cat_title.'</li></ol></div>
             </div></div></div>';
         }
     }
@@ -1151,14 +1162,29 @@ class Common extends Component{
         }*/
 
         $item_arr = [
-            [298,1315600],
-            [306,998100],
-            [307,869900],
-            [316,809700],
-            [317,2679900],
-            [318,959900],
-            [319,1081000],
-            [320,988800],
+            [23,997800,'DB-1'],
+            [64,1017900,'DB-42'],
+            [26,984200,'DB-4'],
+            [40,1074500,'DB-18'],
+            [62,1088500,'DB-40'],
+            [27,1046800,'DB-5'],
+            [63,1595000,'DB-41'],
+            [297,2287100,'DB-43'],
+            [84,1053900,'DB-4P'],
+            [85,1219000,'DB-5P'],
+            [98,1099500,'DB-18P'],
+            [120,1179200,'DB-40P'],
+            [122,1144500,'DB-42P'],
+            [121,1637200,'DB-41P'],
+            [329,1557200,'S-47'],
+            [36,507000,'DB-14'],
+            [94,559100,'DB-14P'],
+            [330,595000,'DB-45'],
+            //[,647900,'DB-45P'],
+            [331,1500000,'DB-46'],
+            //[,1500000,'DB-46P'],
+            [332,1033700,'DB-47'],
+            //[,1137720,'DB-47P'],
         ];
         //$cnt = 0;
         foreach ($item_arr as $row){

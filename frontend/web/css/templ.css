@@ -1256,15 +1256,18 @@ div.custom-mesage{
 .price-content ul.list-style.list-decimal>li {
     font-weight: 400;
 }
-.price-content a.price-link{
+.price-content a.price-link,
+.blog-content a.price-link{
     display: block;
     margin: 5px 0px;
     padding: 10px;
     background: #f7f7f7;
     transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
+    border-bottom: none;
 }
-.price-content a.price-link:hover{
+.price-content a.price-link:hover,
+.blog-content a.price-link:hover{
     background: #59ab02;
     color: #eaeaea;
     transition: all 0.35s ease-in-out;

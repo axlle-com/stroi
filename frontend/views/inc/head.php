@@ -149,6 +149,11 @@ $request_page = Yii::$app->request->get('page');
                                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
                                     <?}
                                 }?>
+                                <?if($request_item == 'otdelka-derevyannogo-doma'){?>
+                                    <li class="active"><a>Отделка деревянного дома</a></li>
+                                <?}else{?>
+                                    <li><a href="<?=Url::to(['/otdelka-derevyannogo-doma'])?>">Отделка деревянного дома</a></li>
+                                <?}?>
                             </ul>
                         </li>
                             <?if($request_alias == 'gallery' ){?>

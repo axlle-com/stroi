@@ -26,7 +26,17 @@ use common\components\Common;
     <div class="widget">
         <h3 class="title-border custom">Навигация</h3>
         <ul class="links">
-            <? $categories = Common::getLeftNav($request_category);
+            <?
+            if(!$request_category && $request_item)
+            {
+                $item = \common\models\Item::findOne(['alias_item' => $request_item]);
+                $alias = $item->category->alias_category;
+            }
+            else
+            {
+                $alias = $request_category;
+            }
+            $categories = Common::getLeftNav($alias);
             foreach ($categories['categories'] as $row)
             {
                 if($categories['who'])
@@ -40,10 +50,14 @@ use common\components\Common;
                     <?}
                 }else
                 {
-                    if($row['alias_item'] == $request_item){?>
+                    if($row->alias_item == $request_item){?>
                         <li class="active"><span><i class="fa fa-angle-right"></i><?=$row['title_short']?></span></li>
                     <?}else{?>
-                        <li><a href="<?=Url::to(['/'.$row->category->alias_category.'/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
+                        <?if(!$row->category->sitemap){?>
+                            <li><a href="<?=Url::to(['/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
+                        <?}else{?>
+                            <li><a href="<?=Url::to(['/'.$row->category->alias_category.'/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
+                        <?}?>
                     <?}
                 }
 

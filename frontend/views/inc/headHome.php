@@ -106,6 +106,7 @@ use common\components\Common;
                                         <li><a href="<?=Common::createdLink($row)?>"><?=$row['title_short']?></a></li>
                                     <?}
                                 }?>
+                                <li><a href="<?=Url::to(['/otdelka-derevyannogo-doma'])?>">Отделка деревянного дома</a></li>
                             </ul>
                         </li>
                         <?if($request_alias == 'gallery' ){?>

@@ -62,13 +62,14 @@ return [
                     'route' => 'site/tags',
                     'suffix' => '.htm',
                 ],*/
-
-
                 [
-                    'class'=>'frontend\filters\UrlMyRule'
+                    'class'=>'frontend\filters\UrlUncategorizedRule'
+                ],
+                [
+                    'class'=>'frontend\filters\UrlTagRule'
                 ],
                 '<action:cashes>'=>'site/<action>',
-                '<action:search|captcha|signup>'=>'site/<action>',
+                '<action:search|captcha>'=>'site/<action>',
 
                 //'<action:about>'=>'site/<action>',
                 '<alias_category:[\w_-]+>/Page-<page:\d+>' => 'site/category',

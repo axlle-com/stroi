@@ -36,7 +36,7 @@ class Image extends \yii\db\ActiveRecord
         return $scenarios;
     }
 
-    public function afterSave(){
+    public function afterSave($insert, $changedAttributes){
         Yii::$app->locator->cache->set('id',$this->id);
     }
     /**

@@ -119,10 +119,20 @@ class SitemapController extends Controller
             // Записи Блога
             $posts = Item::find()->where(['sitemap' => 1])->all();
             foreach ($posts as $post) {
-                $urls[] = array(
-                    Yii::$app->urlManager->createUrl([$post->category->alias_category . '/' . $post->alias_item]) // строим ссылки на записи блога
-                , 'weekly'
-                );
+                if($post->category->sitemap)
+                {
+                    $urls[] = array(
+                        Yii::$app->urlManager->createUrl([$post->category->alias_category . '/' . $post->alias_item]) // строим ссылки на записи блога
+                    , 'weekly'
+                    );
+                }
+                elseif (!$post->category->sitemap && $post->category->published)
+                {
+                    $urls[] = array(
+                        Yii::$app->urlManager->createUrl([$post->alias_item]) // строим ссылки на записи блога
+                    , 'weekly'
+                    );
+                }
             }
             
             $xml_sitemap = $this->renderPartial('index', array( // записываем view на переменную для последующего кэширования
