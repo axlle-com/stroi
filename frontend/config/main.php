@@ -59,26 +59,15 @@ return [
                     'route' => 'sitemap/index',
                     'suffix' => '.xml',
                 ],
-                /*[
-                    'pattern' => '<alias_category:[\w_-]+>/<alias_tags:[\w_-]+>/Page-<page:\d+>',
-                    'route' => 'site/tags',
-                    'suffix' => '.htm',
-                ],
-                [
-                    'pattern' => '<alias_category:[\w_-]+>/<alias_tags:[\w_-]+>',
-                    'route' => 'site/tags',
-                    'suffix' => '.htm',
-                ],*/
                 [
                     'class'=>'frontend\filters\UrlUncategorizedRule'
                 ],
                 [
                     'class'=>'frontend\filters\UrlTagRule'
                 ],
-                //'<action:cashes>'=>'site/<action>',
-                '<action:search|captcha>'=>'site/<action>',
+                '<_a:search|captcha>'=>'site/<_a>',
 
-                //'<action:about>'=>'site/<action>',
+                //'<_a:about>'=>'site/<_a>',
                 '<alias_category:[\w_-]+>/Page-<page:\d+>' => 'site/category',
                 '<alias_category:[\w_-]+>'=>'site/category',
                 '<alias_category:[\w_-]+>/<alias_item:[\w_-]+>'=>'site/item',

@@ -56,8 +56,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<action>' => 'site/<action>',
-                //'<_a:cashes>'=>'site/<_a>',
+                '<_a>'=>'site/<_a>',
 
             ],
         ],
