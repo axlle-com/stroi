@@ -64,9 +64,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $request = Yii::$app->request->get(trim('asslle'));
+        $request = Yii::$app->request->get(trim(Yii::$app->params['secretLogin']));
 
-        if($request && $request == 558088)
+        if($request && $request == Yii::$app->params['secretKey'])
         {
             if (!Yii::$app->user->isGuest) {
                 return $this->goHome();

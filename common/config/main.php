@@ -17,8 +17,6 @@ return [
             'suffix' => '.htm',
             'rules' => [
                 '' => 'site/index',
-
-
             ]
         ],
         
