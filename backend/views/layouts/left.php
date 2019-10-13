@@ -30,10 +30,9 @@ use yii\helpers\Html;
             </div>
         </form>
         <!-- /.search form -->
-        <?//= Html::a('Очистить кэш', [Yii::$app->request->hostInfo.'/cashes.htm', ], ['class' => 'btn btn-primary']) ?>
         <?= dmstr\widgets\Menu::widget(
             [
-                'options' => ['class' => 'sidebar-menu'],
+                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Очистить кэш', 'icon' => 'refresh', 'url' => ['/site/cashes'],],
