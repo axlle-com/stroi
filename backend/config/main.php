@@ -49,44 +49,18 @@ return [
         ],
 
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'suffix' => '',
-            'rules' => [
-                ''=> 'site/index',
-                '<action>'=>'site/<action>',
-            ],
-        ],
-        'urlManagerFrontend' => [
             'class' => 'yii\web\UrlManager',
+            //'hostInfo' => $params['backendHostInfo'],
+            'baseUrl' => '/admin',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'suffix' => '.htm',
             'rules' => [
-                ['class' => 'frontend\filters\UrlRuleFrontend'],
-                '<action:cashes>'=>'site/<action>',
-                '<action:search|captcha>'=>'site/<action>',
-
-                //'<action>'=>'site/<action>',
-                //'<alias_item:[\w_-]+>'=>'site/item',
-                '<alias_category:[\w_-]+>/Page-<page:\d+>' => 'site/category',
-                '<alias_category:[\w_-]+>/Page-<page:\d+>/sort-<sort:[\w_-]+>' => 'site/category',
-                '<alias_category:[\w_-]+>/sort-<sort:[\w_-]+>' => 'site/category',
-                '<alias_category:[\w_-]+>'=>'site/category',
-
-                //'<alias_category:[\w_-]+>/<alias_tags:[\w_-]+>/Page-<page:\d+>' => 'site/tags',
-                //'price/<alias_item:[\w_-]+>'=>'site/item',
-                '<alias_category:[\w_-]+>/<alias_item:[\w_-]+>'=>'site/item',
                 '' => 'site/index',
+                '<action>' => 'site/<action>',
+                //'<_a:cashes>'=>'site/<_a>',
+
             ],
         ],
-        /*'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
-                ],
-            ],
-        ],*/
 
     ],
     'as access' => [

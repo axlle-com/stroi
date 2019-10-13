@@ -449,15 +449,4 @@ class SiteController extends Controller
             'related' => $related,
         ]);
     }
-    public function actionCashes()
-    {
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }else{
-            \Yii::$app->cache->flush();
-            //return $this->goBack();
-            return \Yii::$app->getResponse()->redirect('/admin')->send();
-        }
-    }
-
 }

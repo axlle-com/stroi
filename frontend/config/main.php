@@ -75,15 +75,13 @@ return [
                 [
                     'class'=>'frontend\filters\UrlTagRule'
                 ],
-                '<action:cashes>'=>'site/<action>',
+                //'<action:cashes>'=>'site/<action>',
                 '<action:search|captcha>'=>'site/<action>',
 
                 //'<action:about>'=>'site/<action>',
                 '<alias_category:[\w_-]+>/Page-<page:\d+>' => 'site/category',
                 '<alias_category:[\w_-]+>'=>'site/category',
-
                 '<alias_category:[\w_-]+>/<alias_item:[\w_-]+>'=>'site/item',
-
                 '' => 'site/index',
             ]
         ],

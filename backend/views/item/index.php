@@ -12,70 +12,71 @@ use common\models\Item;
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="item-index">
+<div class="box">
+    <div class="box-body"
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <p>
+            <?= Html::a('Create Item', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+        <?php Pjax::begin(); ?>
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-    <p>
-        <?= Html::a('Create Item', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                'id',
+                //'category_id',
+                [
+                    'attribute'=>'category_id',
+                    'label'=>'Категория',
+                    'format'=>'text', // Возможные варианты: raw, html
+                    'content'=>function($data){
+                        return $data->getCategoryName();
+                    },
+                    'filter' => Item::getCategoryList()
+                ],
+                //'render_id',
+                [
+                    'attribute'=>'render_id',
+                    'label'=>'Страница вывода',
+                    'format'=>'text', // Возможные варианты: raw, html
+                    'content'=>function($data){
+                        return $data->getRenderName();
+                    },
+                    'filter' => Item::getRenderList()
+                ],
+                //'sitemap',
+                //'published',
+                //'favourites',
+                // 'show_comments',
+                // 'show_img',
+                // 'show_img_post',
+                // 'show_img_cat',
+                // 'show_message',
+                // 'show_data',
+                // 'watermark',
+                // 'small_img',
+                // 'tumb_img',
+                // 'media',
+                 'alias_item',
+                 'title',
+                 //'title_seo',
+                // 'title_short',
+                // 'description_seo',
+                // 'description:ntext',
+                // 'purified_text:ntext',
+                // 'date',
+                // 'date_pub',
+                // 'date_end',
+                // 'general_photo',
+                'position',
+                //'hits',
+                // 'stars',
 
-            'id',
-            //'category_id',
-            [
-                'attribute'=>'category_id',
-                'label'=>'Категория',
-                'format'=>'text', // Возможные варианты: raw, html
-                'content'=>function($data){
-                    return $data->getCategoryName();
-                },
-                'filter' => Item::getCategoryList()
+                ['class' => 'yii\grid\ActionColumn'],
             ],
-            //'render_id',
-            [
-                'attribute'=>'render_id',
-                'label'=>'Страница вывода',
-                'format'=>'text', // Возможные варианты: raw, html
-                'content'=>function($data){
-                    return $data->getRenderName();
-                },
-                'filter' => Item::getRenderList()
-            ],
-            //'sitemap',
-            //'published',
-            'favourites',
-            // 'show_comments',
-            // 'show_img',
-            // 'show_img_post',
-            // 'show_img_cat',
-            // 'show_message',
-            // 'show_data',
-            // 'watermark',
-            // 'small_img',
-            // 'tumb_img',
-            // 'media',
-             'alias_item',
-             'title',
-             //'title_seo',
-            // 'title_short',
-            // 'description_seo',
-            // 'description:ntext',
-            // 'purified_text:ntext',
-            // 'date',
-            // 'date_pub',
-            // 'date_end',
-            // 'general_photo',
-            'position',
-            'hits',
-            // 'stars',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-<?php Pjax::end(); ?></div>
+        ]); ?>
+        <?php Pjax::end(); ?>
+    </div>
+</div>

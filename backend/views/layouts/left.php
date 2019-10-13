@@ -36,7 +36,7 @@ use yii\helpers\Html;
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Очистить кэш', 'icon' => 'refresh', 'url' => Yii::$app->request->hostInfo.'/cashes.htm',],
+                    ['label' => 'Очистить кэш', 'icon' => 'refresh', 'url' => ['/site/cashes'],],
                     ['label' => 'Страница вывода', 'icon' => 'dashboard', 'url' => ['/render/index'],],
                     ['label' => 'Категории', 'icon' => 'file-code-o', 'url' => ['/category/index'],],
                     ['label' => 'Статьи', 'icon' => 'dashboard', 'url' => ['/item/index'],],

@@ -34,3 +34,4 @@ phpunit.phar
 /.vagrant
 /frontend/runtime/
 /backend/runtime/
+/common/runtime/
