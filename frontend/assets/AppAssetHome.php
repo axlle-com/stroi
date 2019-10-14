@@ -10,15 +10,12 @@ class AppAssetHome extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/animate.css',
-        //'css/magnific-popup.css',
-        //'css/revslider/revslider-index.css',
-        //'css/jquery.selectbox.css',
-        //'css/style.css',
-        'css/style.min.css',
+        'css/vspacing.min.css',
+        'css/font-awesome.min.css',
+        'css/simple-line-icons.css',
+        'css/style.css',
         'css/colors/green2.css',
-        //'css/templ.css',
-        'css/templ.min.css',
+        'css/templ.css',
     ];
     public $js = [
         /*'js/modernizr.js',

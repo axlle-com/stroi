@@ -87,11 +87,9 @@ Version:1.0
 Import vertical spacing helper css file (minified)
 To see how it work see vspacing.css file (unminified)
 */
-@import url('vspacing.min.css');
-
-/* Import font icons */
+/*@import url('vspacing.min.css');
 @import url('font-awesome.min.css');
-@import url('simple-line-icons.css');
+@import url('simple-line-icons.css');*/
 @font-face {
     font-family: Play;
     src: url(../fonts/Play-Regular.ttf);
