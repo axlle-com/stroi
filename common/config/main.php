@@ -12,6 +12,15 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
             'cachePath' => '@common/runtime/cache',
+            /*'useMemcached' => true,
+            'class' => 'yii\caching\MemCache',
+            'servers' => [
+                [
+                    'host' => '127.0.0.1',
+                    'port' => 11211,
+                ],
+            ],*/
+
         ],
         'db'  => require(__DIR__ . '/db.php'),
         'common' => [
