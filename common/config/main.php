@@ -10,8 +10,14 @@ return [
     'bootstrap'    => ['assetsAutoCompress'],
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
-            'cachePath' => '@common/runtime/cache',
+            //'class' => 'yii\caching\FileCache',
+            //'cachePath' => '@common/runtime/cache',
+            'class' => 'yii\redis\Cache',
+            'redis' => [
+                'hostname' => 'localhost',
+                'port' => 6379,
+                'database' => 0,
+            ]
             /*'useMemcached' => true,
             'class' => 'yii\caching\MemCache',
             'servers' => [
