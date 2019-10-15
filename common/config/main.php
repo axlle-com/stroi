@@ -9,25 +9,7 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap'    => ['assetsAutoCompress'],
     'components' => [
-        'cache' => [
-            //'class' => 'yii\caching\FileCache',
-            //'cachePath' => '@common/runtime/cache',
-            'class' => 'yii\redis\Cache',
-            'redis' => [
-                'hostname' => 'localhost',
-                'port' => 6379,
-                'database' => 0,
-            ]
-            /*'useMemcached' => true,
-            'class' => 'yii\caching\MemCache',
-            'servers' => [
-                [
-                    'host' => '127.0.0.1',
-                    'port' => 11211,
-                ],
-            ],*/
-
-        ],
+        'cache' => require(__DIR__ . '/cache.php'),
         'db'  => require(__DIR__ . '/db.php'),
         'common' => [
             'class' => 'common\components\Common',
