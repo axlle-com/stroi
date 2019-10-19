@@ -30,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <div class="row">
 
-<!-- content --><?if($this->beginCache('reviews',[
+<!-- content --><?php if($this->beginCache('reviews',[
                 'variations' => [$category->alias_category.$request_page],
                 'duration' => 0,
                 ])):?>
             <div class="col-md-9 col-md-push-3 reviews">
                 <h1 class="title-underblock custom"><?=$title?></h1>
-                <?if($description){?>
+                <?php if($description){?>
                     <div class="category-details-container">
                         <div class="row">
                             <div class="col-md-3">
@@ -53,36 +53,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     </div>
-                <?}else{}?>
-                <?if(!count($model)){}else{?>
-                    <?foreach($model as $row):?>
-                        <?if(!$row->positively){$color = 'rev-bad';}else{$color = '';}?>
+                <?php }else{}?>
+                <?php if(!count($model)){}else{?>
+                    <?php foreach($model as $row):?>
+                        <?php if(!$row->positively){$color = 'rev-bad';}else{$color = '';}?>
                         <article class="entry <?=$color?>">
 
                             <span class="entry-date <?=$color?>"><?=Common::getData($row->data,0)[0]?><span><?=Common::getData($row->data,0)[1]?></span></span>
                             <span class="entry-format <?=$color?>">
-                                <?if($row->positively){?>
+                                <?php if($row->positively){?>
                                     <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                <?}else{?>
+                                <?php }else{?>
                                     <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                                <?}?>
+                                <?php }?>
                             </span>
 
                             <h2 class="entry-title"><?=$row->title?></h2>
                             <ul>
-                                <?if($row->name){?>
+                                <?php if($row->name){?>
                                     <li><i class="fa fa-address-card-o" aria-hidden="true"></i><?=$row->name?></li>
-                                <?}?>
-                                <?if($row->place){?>
+                                <?php }?>
+                                <?php if($row->place){?>
                                     <li><i class="fa fa-map-marker" aria-hidden="true"></i><?=$row->place?></li>
-                                <?}?>
+                                <?php }?>
                             </ul>
                             <div class="entry-content <?=$color?>">
                                 <p><?=$row->description?></p>
-                                <?if($im = Common::showGalleryImage($row)){?>
+                                <?php if($im = Common::showGalleryImage($row)){?>
                                 <div class="popup-gallery">
                                     <div class="row">
-                                    <?$cnt =  0;sort($im); foreach($im as $low):?>
+                                    <?php $cnt =  0;sort($im); foreach($im as $low):?>
                                         <div class="col-sm-3">
                                             <div class="portfolio-item portfolio-image-zoom">
                                                 <figure>
@@ -91,14 +91,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     </a>
                                                 </figure>
                                             </div><!-- End .portfolio-item -->
-                                        </div><?$cnt++; if($cnt%4 == 0 && $cnt != 4){echo '</div><div class="row">';}?>
+                                        </div><?php $cnt++; if($cnt%4 == 0 && $cnt != 4){echo '</div><div class="row">';}?>
 
-                                    <?endforeach;?>
+                                    <?php endforeach;?>
                                     </div>
                                 </div>
-                                <?}?>
+                                <?php }?>
                             </div><!-- End .entry-content -->
-                            <?if($row->description_rev){?>
+                            <?php if($row->description_rev){?>
                             <div class="reviews-ans">
                                 <span class="entry-answer <?=$color?>"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
                                 <ul>
@@ -109,26 +109,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <p><?=$row->description_rev?></p>
                                 </div><!-- End .reviews-content -->
                             </div>
-                            <?}?>
+                            <?php }?>
                             <span class="close-rev <?=$color?>"></span>
                         </article>
-                    <?endforeach;?>
-                <?}?>
+                    <?php endforeach;?>
+                <?php }?>
 
                 <div class="mb30"></div><!-- space -->
-                <?if($pages){?>
+                <?php if($pages){?>
                 <nav class="pagination-container">
-                    <? echo \yii\widgets\LinkPager::widget([
+                    <?= \yii\widgets\LinkPager::widget([
                         'pagination' => $pages
                     ]) ?>
                 </nav>
-                <?}?>
+                <?php }?>
             </div><!-- End .col-md-9 -->
-<!-- content --><?$this->endCache(); endif;?>
+<!-- content --><?php $this->endCache(); endif;?>
 
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
             <aside class="col-md-3 col-md-pull-9 sidebar">
-                <? echo $this->render("//inc/leftBlog") ?>
+                <?= $this->render("//inc/leftBlog") ?>
             </aside>
         </div><!-- End .row -->
 
@@ -142,7 +142,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="modal-title" id="myModalLabel5">Отправить отзыв</h3>
             </div><!-- End .modal-header -->
             <div class="modal-body">
-                <? echo \frontend\widgets\MessageWidget::widget() ?>
+                <?= \frontend\widgets\MessageWidget::widget() ?>
             </div><!-- End .modal-body -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>

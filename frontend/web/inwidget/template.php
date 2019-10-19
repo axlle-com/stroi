@@ -121,8 +121,3 @@ if(!$inWidget instanceof \inWidget\Core) {
 <?php endif;?>
 </body>
 </html>
-<!-- 
-	inWidget - free Instagram widget for your site!
-	http://inwidget.ru
-	© Alexandr Kazarmshchikov
--->

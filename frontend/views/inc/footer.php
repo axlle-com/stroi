@@ -65,11 +65,11 @@
                         <h4>популярное</h4>
                         <div class="rel-posts-list">
                             <ol>
-                            <?foreach(\common\components\Common::getNews([11,12,15],2,12) as $row):?>
+                            <?php foreach(\common\components\Common::getNews([11,12,15],2,12) as $row):?>
 
                                 <li><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="<?=\common\components\Common::createdLink($row)?>"><?=$row->title_short?></a></li>
 
-                            <?endforeach;?>
+                            <?php endforeach;?>
                             </ol>
                         </div><!-- End -->
                     </div><!-- End .widget -->

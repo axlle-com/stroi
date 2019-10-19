@@ -73,14 +73,14 @@ $request_page = Yii::$app->request->get('page');
                 </div><!-- End .navbar-header -->
 
                 <div class="collapse navbar-collapse" id="main-navbar-container">
-                    <?if($this->beginCache('topNav',[
+                    <?php if($this->beginCache('topNav',[
                         'variations' => [$request_alias.$request_item.$request_tags.$request_page],
                         'duration' => 0,
                     ])):?>
                         <ul class="nav navbar-nav">
                         <li class="dropdown">
 
-                            <?foreach (Common::getTopNav(2) as $row)
+                            <?php foreach (Common::getTopNav(2) as $row)
                             {
                                 if($request_alias == $row['alias_category'])
                                 {
@@ -92,21 +92,22 @@ $request_page = Yii::$app->request->get('page');
                             }?>
                             <a class="dropdown-toggle <?=$active_2?>" data-toggle="dropdown" role="button" aria-expanded="false">Проекты<span class="angle"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(2) as $row)
+                                <?php foreach (Common::getTopNav(2) as $row)
                                 {
                                     if($row['alias_category'] == $request_alias && ($request_item || $request_tags || $request_page)){?>
                                         <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}elseif($row['alias_category'] == $request_alias && !$request_item && !$request_tags && !$request_page){?>
+                                    <?php }elseif($row['alias_category'] == $request_alias && !$request_item &&
+                                        !$request_tags && !$request_page){?>
                                         <li class="active"><a><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
                                 
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <?if($request_alias == 'price')
+                            <?php if($request_alias == 'price')
                             {
                                 $active_4 = 'active';
                             }else{
@@ -115,18 +116,18 @@ $request_page = Yii::$app->request->get('page');
                             <a class="dropdown-toggle <?=$active_4?>" data-toggle="dropdown" role="button" aria-expanded="false">Цены<span class="angle"></span></a>
 
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(9,0) as $row)
+                                <?php foreach (Common::getTopNav(9,0) as $row)
                                 {
                                     if($row['alias_item'] == $request_item){?>
                                         <li class="active"><a><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Url::to(['/'.$row->category->alias_category.'/'.$row['alias_item']])?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <?foreach (Common::getTopNav(10) as $row)
+                            <?php foreach (Common::getTopNav(10) as $row)
                             {
                                 if($request_alias == $row['alias_category'])
                                 {
@@ -139,40 +140,41 @@ $request_page = Yii::$app->request->get('page');
 
                             <a class="dropdown-toggle <?=$active_5?>" data-toggle="dropdown" role="button" aria-expanded="false">Информация<span class="angle"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(10) as $row)
+                                <?php foreach (Common::getTopNav(10) as $row)
                                 {
                                     if($row['alias_category'] == $request_alias && ($request_item || $request_tags || $request_page)){?>
                                         <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}elseif($row['alias_category'] == $request_alias && !$request_item && !$request_tags && !$request_page){?>
+                                    <?php }elseif($row['alias_category'] == $request_alias && !$request_item &&
+                                        !$request_tags && !$request_page){?>
                                         <li class="active"><a><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
-                                <?if($request_item == 'otdelka-derevyannogo-doma'){?>
+                                <?php if($request_item == 'otdelka-derevyannogo-doma'){?>
                                     <li class="active"><a>Отделка деревянного дома</a></li>
-                                <?}else{?>
+                                <?php }else{?>
                                     <li><a href="<?=Url::to(['/otdelka-derevyannogo-doma'])?>">Отделка деревянного дома</a></li>
-                                <?}?>
+                                <?php }?>
                             </ul>
                         </li>
-                            <?if($request_alias == 'gallery' ){?>
+                            <?php if($request_alias == 'gallery' ){?>
                                 <li><a class="active">Галерея</a></li>
-                            <?}else{?>
+                            <?php }else{?>
                                 <li><a href="<?= Url::to(['/gallery']);?>">Галерея</a></li>
-                            <?}?>
-                            <?if($request_alias == 'otzyvy' ){?>
+                            <?php }?>
+                            <?php if($request_alias == 'otzyvy' ){?>
                                 <li><a class="active">Отзывы</a></li>
-                            <?}else{?>
+                            <?php }else{?>
                                 <li><a href="<?= Url::to(['/otzyvy']);?>">Отзывы</a></li>
-                            <?}?>
-                         <?if($request_alias == 'kontakt' ){?>
+                            <?php }?>
+                         <?php if($request_alias == 'kontakt' ){?>
                             <li><a class="active">Контакты</a></li>
-                        <?}else{?>
+                        <?php }else{?>
                             <li><a href="<?= Url::to(['/kontakt']);?>">Контакты</a></li>
-                        <?}?>
+                        <?php }?>
                     </ul>
-                    <?$this->endCache(); endif;?>
+                    <?php $this->endCache(); endif;?>
                     <button type="button" class="navbar-btn btn-icon navbar-right last  hidden-sm hidden-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
                     <button type="button" class="navbar-btn btn-icon navbar-right last  hidden-sm hidden-xs" data-favorite-box="2" data-link-sort="/favorite.htm"><span></span><i class="fa fa-heart-o"></i></button>
                 </div><!-- /.navbar-collapse -->

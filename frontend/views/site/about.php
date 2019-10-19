@@ -88,12 +88,12 @@ $this->params['breadcrumbs'][] = $this->title;
     $cnt1 = 0;
     ?>
     <div class="col-md-2">
-    <?foreach ($item['item'] as $i){
+    <?php foreach ($item['item'] as $i){
         $cnt++;
         echo $cnt.'.'.$i->position.'<br>';
     }?>
     </div><div class="col-md-2">
-    <?foreach ($item['details'] as $j){
+    <?php foreach ($item['details'] as $j){
         $cnt1++;
         echo $cnt1.'.'.$j->original_price.'<br>';
     }
@@ -191,9 +191,9 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 ?>
     <ul class="list-style list-decimal">
-        <? foreach($urls as $url): ?>
+        <?php foreach($urls as $url): ?>
             <li><a href="<?= Yii::$app->request->hostInfo . $url[0] ?>" target="_blank"><?= Yii::$app->request->hostInfo . $url[0] ?></a></li>
-        <? endforeach; ?>
+        <?php endforeach; ?>
     </ul>
 
 </div>

@@ -19,10 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="row">
         <div class="col-md-9 col-md-push-3">
-<!-- content --><?if($this->beginCache('item',[
+<?php
+    if($this->beginCache('item',[
                 'variations' => [$model->alias_item],
                 'duration' => 0,
-            ])):?>
+                ]
+            )
+    ):
+?>
+;
             <div class="row">
                 <div itemscope itemtype="http://schema.org/Product">
                     <div class="col-md-12"><h1 class="title-underblock custom" itemprop="name"><?=$model['title']?></h1></div>
@@ -36,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-sm-8">
                     <div class="item-image-box popup-gallery">
                         <div class="product-top">
-                            <?if($img = Common::showGeneralImage($model)[0])
+                            <?php if($img = Common::showGeneralImage($model)[0])
                             {?>
                                 <div data-big="0" class="box-image image-active">
                                     <img  class="img-responsive" src="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" alt="<?=$model->title?> Фото-1"/>
@@ -44,24 +49,24 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <span class="control-left box-gallery-control" data-box-slide="prev"><i class="fa fa-angle-left"></i></span>
                                 <span class="control-right box-gallery-control" data-box-slide="next"><i class="fa fa-angle-right"></i></span>
                                 <span class="control-loupe box-gallery-control" data-box-slide="loupe"><i class="fa fa-search" aria-hidden="true"></i></span>
-                            <?}else{?>
+                            <?php }else{?>
                                 <img id="product-zoom" src="<?=Yii::$app->params['photo']?>" data-zoom-image="<?=Yii::$app->params['photo']?>" alt="Фото-<?=$model->title?>"/>
-                            <?}?>
+                            <?php }?>
                         </div><!-- End .product-top -->
 
                         <div class="tumb-gallery">
-                            <? $img_gal = Common::showGalleryImage($model);?>
-                            <?if($img_gal){?>
-                                <?sort($img_gal);$count = count($img_gal); ?>
+                            <?php $img_gal = Common::showGalleryImage($model);?>
+                            <?php if($img_gal){?>
+                                <?php sort($img_gal);$count = count($img_gal); ?>
                                 <div class="item-box-gallery">
                                     <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/<?=$img?>" data-title="<?=$model['title']?> Фото-1" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/general/tumb_<?=$img?>')"></span>
                                 </div>
-                                <? $cnt = 2;foreach($img_gal as $row):?>
+                                <?php $cnt = 2;foreach($img_gal as $row):?>
                                     <div class="item-box-gallery">
                                         <span class="item-image-gallery" data-tumb="/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/<?=$row?>" data-title="<?=$model['title']?> Фото-<?=$cnt?>" style="background-image: url('/images/<?=$model->getFolder().'/'.$model->alias_item?>/gallery/tumb_<?=$row?>')"></span>
                                     </div>
-                                <?$cnt++;endforeach;?>
-                            <?}?>
+                                <?php $cnt++;endforeach;?>
+                            <?php }?>
                         </div>
                     </div><!-- End .product-gallery-container -->
                 </div>
@@ -70,20 +75,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="shop-continue-box">
                             <div class="subtotal-row">Общая площадь:<span><?=$model->details->square?> кв.м</span></div>
                             <div class="subtotal-row">Этажность:<span><?=$model->details->floor?></span></div>
-                            <?if($room = $model->details->room){?>
+                            <?php if($room = $model->details->room){?>
                                 <div class="subtotal-row">Комнат:<span><?=$room?></span></div>
-                            <?}?>
-                            <?if($model->details->time_build)
+                            <?php }?>
+                            <?php if($model->details->time_build)
                             {?>
                                 <div class="subtotal-row">Строительство:<span><?=$model->details->time_build?> дней</span></div>
-                            <?}?>
+                            <?php }?>
                             <div class="subtotal-row old-price">Старая цена:<span><strong data-item-old-price="<?=number_format(($model->details->original_price), 0, ',', '');?>"><?=number_format(($model->details->original_price), 0, ',', ' ');?></strong> &#8381;</span></div>
                             <div class="grandtotal-row">Цена:<span><strong data-item-price="<?=Common::getSalePrice($model,'');?>"><?=Common::getSalePrice($model,' ');?></strong> &#8381;</span></div>
                             <div class="grandtotal-row product-sale">Выгода:<span><strong data-item-sale=""><?=number_format($model->details->original_price - Common::getSalePrice($model,''), 0, ',', ' ')?></strong> &#8381;</span></div>
 
                             <a title="Добавить в избранное" class="multiple-link add-to-favorite" data-favorite="<?=$model->id?>"><i class="fa fa-heart-o" aria-hidden="true"></i>Добавить в избранное</a>
                             <a href="<?=Url::to(['/price/tseny-na-derevyannye-doma-i-bani'])?>" title="Базовая комплектация" class="multiple-link"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Базовая комплектация.<br>Цена указана без отделки.</a>
-                            <? if ($same_item = Item::findOne($model->details->same_item))
+                            <?php if ($same_item = Item::findOne($model->details->same_item))
                             {
                                 if( $same_item->details->material == 'lafet' )
                                 {
@@ -103,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 ?>
                                 <a href="<?=Common::createdLink($same_item)?>" class="btn btn-default btn-block btn-border text-uppercase">Такой же из <?=$material?></a>
-                            <?}?>
+                        <?php }?>
                             <button class="btn btn-custom btn-border no-radius button-message message-catalog" data-toggle="modal" data-target="#modal-contact-form-advanced">
                                Получить каталог
                             </button>
@@ -121,27 +126,27 @@ $this->params['breadcrumbs'][] = $this->title;
                         Задать вопрос специалисту
                     </button>
                     <div class="panel-group panel-description" role="tablist" aria-multiselectable="true">
-                        <?if($model->infoblocks)
+                        <?php if($model->infoblocks)
                         {
                             foreach($model->infoblocks as $row):
-                                if($row[name] != 'important')
+                                if($row['name'] != 'important')
                                 {?>
                                     <div class="panel panel-bordered">
-                                        <div class="panel-heading" role="tab" id="<?=$row[name].$row[id]?>">
+                                        <div class="panel-heading" role="tab" id="<?=$row['name'].$row['id']?>">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#<?=$row[name]?>" aria-expanded="false" aria-controls="<?=$row[name]?>" class="collapsed">
-                                                    <?=$row[title]?>
+                                                <a data-toggle="collapse" href="#<?=$row['name']?>" aria-expanded="false" aria-controls="<?=$row['name']?>" class="collapsed">
+                                                    <?=$row['title']?>
                                                     <span class="panel-icon"></span>
                                                 </a>
                                             </h4>
                                         </div><!-- End .panel-heading -->
-                                        <div id="<?=$row[name]?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<?=$row[name].$row[id]?>" aria-expanded="false" style="height: 0px;">
+                                        <div id="<?=$row['name']?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<?=$row['name'].$row['id']?>" aria-expanded="false" style="height: 0px;">
                                             <div class="panel-body">
-                                                <?=$row[description]?>
+                                                <?=$row['description']?>
                                             </div><!-- End .panel-body -->
                                         </div><!-- End .panel-collapse -->
                                     </div><!-- End .panel -->
-                                <?}
+                                <?php }
                             endforeach;?>
                             <div class="panel panel-bordered">
                                 <div class="panel-heading" role="tab" id="important1">
@@ -154,33 +159,36 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div><!-- End .panel-heading -->
                                 <div id="important" class="panel-collapse collapse" role="tabpanel" aria-labelledby="important1" aria-expanded="false" style="height: 0px;">
                                     <div class="panel-body">
-                                        <?foreach(Common::getImportant('important') as $low):?>
+                                        <?php foreach(Common::getImportant('important') as $low):?>
                                             <div class="row">
                                                 <div class="clo-sm-12">
                                                     <div class="col-sm-3">
                                                         <div class="entry-media-service">
                                                             <figure>
-                                                                <img src="/images/infoblock/<?=$low[id]?>/general/<?=Common::showGeneralImage($low)[0]?>" alt="<?=$low[title]?>-фото" class="img-responsive">
+                                                                <img src="/images/infoblock/<?=$low['id']?>/general/<?=Common::showGeneralImage($low)[0]?>" alt="<?=$low['title']?>-фото" class="img-responsive">
                                                             </figure>
                                                         </div><!-- End .entry-media -->
                                                     </div>
                                                     <div class="col-sm-9">
-                                                        <h3 class="entry-title"><?=$low[title]?></h3>
+                                                        <h3 class="entry-title"><?=$low['title']?></h3>
                                                         <div class="entry-block">
-                                                            <?=$low[description]?>
+                                                            <?=$low['description']?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?endforeach;?>
+                                        <?php endforeach;?>
                                     </div><!-- End .panel-body -->
                                 </div><!-- End .panel-collapse -->
                             </div><!-- End .panel -->
-                        <?}?>
+                        <?php }?>
                     </div><!-- End .panel-group -->
                 </div><!-- End .col-md-12 -->
             </div><!-- End .row -->
-<!-- content --><?$this->endCache(); endif;?>
+<?php
+    $this->endCache();
+    endif;
+?>
 
         </div><!-- End .col-md-9 -->
 
@@ -188,7 +196,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <aside class="col-md-3 col-md-pull-9 sidebar">
 
-            <? echo $this->render("//inc/leftCat") ?>
+            <?= $this->render("//inc/leftCat") ?>
 
         </aside><!-- End .col-md-3 -->
 
@@ -196,7 +204,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-12">
 
-<!-- content --><?if($this->beginCache('related',[
+<!-- content --><?php if($this->beginCache('related',[
                     'variations' => [$model->category->alias_category.$model->alias_item],
                     'duration' => 10800,
                 ])):?>
@@ -205,21 +213,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="owl-carousel related-products-carousel2 center-top-nav gray-nav" data-owl-carousel="product" data-responsive="4-3-2-1">
 
-                    <?foreach($related as $row):?>
+                    <?php foreach($related as $row):?>
 
                         <div class="product text-center">
                             <div class="product-top">
                                 <span class="product-box discount-box discount-box-border">-10%</span>
                                 <figure>
                                     <a href="<?=Common::createdLink($row)?>" title="<?=$row->title?>">
-                                        <?$img_gal = Common::showGalleryImage($row);?>
-                                        <?if(($img = Common::showGeneralImage($row)[0]) && ($img_gal))
+                                        <?php $img_gal = Common::showGalleryImage($row);?>
+                                        <?php if(($img = Common::showGeneralImage($row)[0]) && ($img_gal))
                                         {
                                             sort($img_gal);?>
                                             <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}else{?>
+                                        <?php }else{?>
                                             <img src="<?=Yii::$app->params['photo']?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}?>
+                                        <?php }?>
 
                                     </a>
                                 </figure>
@@ -229,9 +237,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <ul>
                                     <li>Площадь:<span><?=$row->details->square?></span> кв.м</li>
                                     <li>Этажность:<span><?=$row->details->floor?></span></li>
-                                    <?if($room = $row->details->room){?>
+                                    <?php if($room = $row->details->room){?>
                                         <li>Комнат:<span><?=$room?></span></li>
-                                    <?}?>
+                                    <?php }?>
                                 </ul>
                             </div>
                             <div class="product-price-container">
@@ -241,10 +249,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         </div><!-- End .product -->
 
-                    <?endforeach;?>
+                    <?php endforeach;?>
 
                 </div><!-- End .owl-carousel -->
-<!-- content --><?$this->endCache(); endif;?>
+<!-- content --><?php $this->endCache(); endif;?>
 
         </div><!-- End .col-md-9 -->
     </div><!-- End .row -->
@@ -256,7 +264,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3 class="modal-title" id="myModalLabel5">Написать нам</h3>
                 </div><!-- End .modal-header -->
                 <div class="modal-body">
-                    <? echo \frontend\widgets\QuestionWidget::widget() ?>
+                    <?= \frontend\widgets\QuestionWidget::widget() ?>
                 </div><!-- End .modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
@@ -272,7 +280,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="modal-title" id="myModalLabel6">Написать нам</h3>
             </div><!-- End .modal-header -->
             <div class="modal-body">
-                <? echo \frontend\widgets\MessageWidget::widget() ?>
+                <?= \frontend\widgets\MessageWidget::widget() ?>
             </div><!-- End .modal-body -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>

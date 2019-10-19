@@ -42,7 +42,7 @@ $fieldOptions2 = [
             ->label(false)
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-        <? echo $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
             'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
         ])
         ?>

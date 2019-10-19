@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace frontend\filters;
 use Yii;

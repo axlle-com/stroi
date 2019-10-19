@@ -16,40 +16,41 @@ use common\components\Common;
 ?>
 
 <div class="widget">
-    <?$request_category = Yii::$app->request->get('alias_category');?>
-    <?$request_item = Yii::$app->request->get('alias_item');?>
-    <?$request_tags = Yii::$app->request->get('alias_tags');?>
-    <?$request_page = Yii::$app->request->get('page');?>
-    <?if($this->beginCache('leftNav',[
+    <?php $request_category = Yii::$app->request->get('alias_category');?>
+    <?php $request_item = Yii::$app->request->get('alias_item');?>
+    <?php $request_tags = Yii::$app->request->get('alias_tags');?>
+    <?php $request_page = Yii::$app->request->get('page');?>
+    <?php if($this->beginCache('leftNav',[
                     'variations' => [$request_category.$request_item.$request_tags.$request_page],
                     'duration' => 0,
                 ])):?>
     <h3 class="title-border custom">Навигация</h3>
         <ul class="links">
-            <? $categories = Common::getLeftNav($request_category);
+            <?php $categories = Common::getLeftNav($request_category);
             foreach ($categories['categories'] as $row)
             {
                 if($categories['who'])
                 {
                     if($row['alias_category'] == $request_category && ($request_item || $request_tags || $request_page)){?>
                         <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                    <?}elseif($row['alias_category'] == $request_category && !$request_item && !$request_tags && !$request_page){?>
+                    <?php }elseif($row['alias_category'] == $request_category && !$request_item && !$request_tags &&
+                        !$request_page){?>
                         <li class="active"><span><i class="fa fa-angle-right"></i><?=$row['title_short']?></span></li>
-                    <?}else{?>
+                    <?php }else{?>
                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                    <?}
+                    <?php }
                 }else
                 {
                     if($row['alias_item'] == $request_item){?>
                         <li class="active"><span><i class="fa fa-angle-right"></i><?=$row['title_short']?></span></li>
-                    <?}else{?>
+                    <?php }else{?>
                         <li><a href="<?=Url::to(['/'.$row->category->alias_category.'/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                    <?}
+                    <?php }
                 }
 
             }?>
         </ul>
-    <?$this->endCache(); endif;?>
+    <?php $this->endCache(); endif;?>
 </div><!-- End .widget -->
 <div class="widget">
     <ul class="left-baner">

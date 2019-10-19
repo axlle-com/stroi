@@ -38,9 +38,9 @@ AppAssetHome::register($this);
 
 <?php $this->beginBody() ?>
 <div id="wrapper">
-    <? echo $this->render("//inc/headHome") ?>
+    <?= $this->render("//inc/headHome") ?>
     <?= $content ?>
-    <? echo $this->render("//inc/footer") ?>
+    <?= $this->render("//inc/footer") ?>
 </div>
 <a href="#top" id="scroll-top" title="Back to Top"><i class="fa fa-angle-up"></i></a>
 

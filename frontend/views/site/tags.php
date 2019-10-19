@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="container">
         <div class="row">
-<!-- content --><?
+<!-- content --><?php
             if($this->beginCache('tags',[
                 'variations' => [$category->alias_category.$category->alias_tags.$request_sort.$request_page],
                 'duration' => 0,
@@ -46,119 +46,119 @@ $this->params['breadcrumbs'][] = $this->title;
                         <meta content="RUB" itemprop="priceCurrency"><!-- Валюта -->
                     </div>
                 </div>
-                <?
+                <?php
                     $alias_category = Yii::$app->request->get(trim('alias_category'));
                     $request_tags = Yii::$app->request->get(trim('alias_tags'));
                     $tags = Common::getTag($alias_category);
                 ?>
-                <?if($tags){?>
+                <?php if($tags){?>
                     <div class="row tags">
                         <div class="col-md-12">
-                            <?if($tags['size']){?>
+                            <?php if($tags['size']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Размер:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['size'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['size'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
-                            <?if($tags['square']){?>
+                            <?php }?>
+                            <?php if($tags['square']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Площадь:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['square'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['square'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
-                            <?if($tags['features']){?>
+                            <?php }?>
+                            <?php if($tags['features']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Конструктивные особенности:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['features'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['features'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
-                            <?if($tags['price']){?>
+                            <?php }?>
+                            <?php if($tags['price']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Стоимость:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['price'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['price'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
-                            <?if($tags['floor']){?>
+                            <?php }?>
+                            <?php if($tags['floor']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Этажность:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['floor'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['floor'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
-                            <?if($tags['type']){?>
+                            <?php }?>
+                            <?php if($tags['type']){?>
                                 <div class="row tags-group">
                                     <div class="col-sm-4"><h5>Тип постройки:</h5></div>
                                     <div class="col-sm-8">
-                                        <?foreach($tags['type'] as $row):?>
-                                            <?if($row->alias_tags == $request_tags){?>
+                                        <?php foreach($tags['type'] as $row):?>
+                                            <?php if($row->alias_tags == $request_tags){?>
                                                 <div class="tags-active"><span><?=$row->title_short?></span><a href="<?=Url::to(['/'.$row->alias_category])?>" class=""><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a></div>
-                                            <?}else{?>
+                                            <?php }else{?>
                                                 <a href="<?=Url::to(['/'.$row->alias_category.'/'.$row->alias_tags])?>" class="btn btn-custom2 btn-border btn-sm"><?=$row->title_short?></a>
-                                            <?}?>
-                                        <?endforeach;?>
+                                            <?php }?>
+                                        <?php endforeach;?>
                                     </div>
                                 </div>
-                            <?}?>
+                            <?php }?>
                         </div>
                     </div>
-                <?}?>
+                <?php }?>
                 <div class="row">
                     <div class="col-md-12 sort">
                         <span class="sort-title">Сортировка:</span>
-                        <?if($request_sort == 'price-asc' || !$request_sort || $request_sort != 'price-desc'){?>
+                        <?php if($request_sort == 'price-asc' || !$request_sort || $request_sort != 'price-desc'){?>
                             <span data-link-sort="<?=Url::to(['/'.$category->alias_category.'/'.$category->alias_tags, 'sort' => 'price-desc', '#' => 'sort'])?>" class="sort-name" title="Цена по возрастанию" >По цене<i class="fa fa-sort-amount-asc"></i></span>
-                        <?}elseif ($request_sort == 'price-desc'){?>
+                        <?php }elseif ($request_sort == 'price-desc'){?>
                             <span data-link-sort="<?=Url::to(['/'.$category->alias_category.'/'.$category->alias_tags, '#' => 'sort'])?>" class="sort-name" title="Цена по убыванию" >По цене<i class="fa fa-sort-amount-desc"></i></span>
-                        <?}?>
+                        <?php }?>
                     </div>
                 </div>
-                <?if(!count($model)){}else{?>
-                    <?
+                <?php if(!count($model)){}else{?>
+                    <?php
                     $count = 1;
                     $teg_row = '<div class="row">';
                     $teg_div = '</div><!-- End .row -->';
                     ?>
-                    <?foreach($model as $row):?>
-                    <?if($count == 1 || $count%2 != 0)
+                    <?php foreach($model as $row):?>
+                    <?php if($count == 1 || $count%2 != 0)
                         echo $teg_row;
                     ?>
                     <div class="col-sm-6">
@@ -167,12 +167,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <span class="product-box discount-box discount-box-border">-10%</span>
                                 <figure>
                                     <a href="<?=Common::createdLink($row)?>" title="<?=$row->title?>">
-                                        <?if($img = Common::showGeneralImage($row)[0])
+                                        <?php if($img = Common::showGeneralImage($row)[0])
                                         {?>
                                             <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}else{?>
+                                        <?php }else{?>
                                             <img src="<?=Yii::$app->params['photo']?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}?>
+                                        <?php }?>
                                     </a>
                                 </figure>
                                 <span class="add-to-favorite" title="Добавить в избранное" data-favorite="<?=$row->id?>"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
@@ -182,9 +182,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <ul>
                                     <li>Площадь:<span><?=$row->details->square?></span> кв.м</li>
                                     <li>Этажность:<span><?=$row->details->floor?></span></li>
-                                    <?if($room = $row->details->room){?>
+                                    <?php if($room = $row->details->room){?>
                                     <li>Комнат:<span><?=$room?></span></li>
-                                    <?}?>
+                                    <?php }?>
                                 </ul>
                             </div>
                             <div class="product-price-container">
@@ -193,34 +193,34 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div><!-- End .product-price-container -->
                         </div><!-- End .product -->
                     </div><!-- End .col-sm-6 -->
-                    <?
+                    <?php
                         if ($count%2 == 0 /*&& $count != $pages_size && $count != $items_count*/ && $count != count($model))
                         {
                             echo $teg_div;
                         }
                         $count++;?>
-                    <?endforeach;?>
+                    <?php endforeach;?>
                     <?=$teg_div?>
-                <?}?>
+                <?php }?>
                 <div class="mb30"></div><!-- space -->
-                <?if($pages){?>
+                <?php if($pages){?>
                 <nav class="pagination-container">
-                    <? echo \yii\widgets\LinkPager::widget([
+                    <?= \yii\widgets\LinkPager::widget([
                         'pagination' => $pages
                     ]) ?>
                 </nav>
-                <?}?>
-                <?if($description){?>
+                <?php }?>
+                <?php if($description){?>
                     <div class="category-details-container">
                         <p><?=$description?></p>
                     </div>
-                <?}else{}?>
+                <?php }else{}?>
             </div><!-- End .col-md-9 -->
 
-<!-- content --><?$this->endCache(); endif;?>
+<!-- content --><?php $this->endCache(); endif;?>
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
             <aside class="col-md-3 col-md-pull-9 sidebar">
-                <? echo $this->render("//inc/leftCat") ?>
+                <?= $this->render("//inc/leftCat") ?>
             </aside>
         </div><!-- End .row -->
 

@@ -41,21 +41,21 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-md-12 sort">
                     <span class="sort-title">Сортировка:</span>
-                    <?if($request_sort == 'price-asc' || !$request_sort || $request_sort != 'price-desc'){?>
+                    <?php if($request_sort == 'price-asc' || !$request_sort || $request_sort != 'price-desc'){?>
                         <span data-link-sort="<?=Url::to(['/'.$category->alias_category, 'sort' => 'price-desc', '#' => 'sort'])?>" class="sort-name" title="Цена по возрастанию" >По цене<i class="fa fa-sort-amount-asc"></i></span>
-                    <?}elseif ($request_sort == 'price-desc'){?>
+                    <?php }elseif ($request_sort == 'price-desc'){?>
                         <span data-link-sort="<?=Url::to(['/'.$category->alias_category, '#' => 'sort'])?>" class="sort-name" title="Цена по убыванию" >По цене<i class="fa fa-sort-amount-desc"></i></span>
-                    <?}?>
+                    <?php }?>
                 </div>
             </div>
-            <?if(!count($model)){}else{?>
+            <?php if(!count($model)){}else{?>
                 <?
                 $count = 1;
                 $teg_row = '<div class="row">';
                 $teg_div = '</div><!-- End .row -->';
                 ?>
-                <?foreach($model as $row):?>
-                    <?if($count == 1 || $count%2 != 0)
+                <?php foreach($model as $row):?>
+                    <?php if($count == 1 || $count%2 != 0)
                         echo $teg_row;
                     ?>
                     <div class="col-sm-6">
@@ -64,12 +64,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <span class="product-box discount-box discount-box-border">-10%</span>
                                 <figure>
                                     <a href="<?=Common::createdLink($row)?>" title="<?=$row->title?>">
-                                        <?if($img = Common::showGeneralImage($row)[0])
+                                        <?php if($img = Common::showGeneralImage($row)[0])
                                         {?>
                                             <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}else{?>
+                                        <?php }else{?>
                                             <img src="<?=Yii::$app->params['photo']?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}?>
+                                        <?php }?>
                                     </a>
                                 </figure>
                                 <span class="add-to-favorite" title="Добавить в избранное" data-favorite="<?=$row->id?>"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
@@ -79,9 +79,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <ul>
                                     <li>Площадь:<span><?=$row->details->square?></span> кв.м</li>
                                     <li>Этажность:<span><?=$row->details->floor?></span></li>
-                                    <?if($room = $row->details->room){?>
+                                    <?php if($room = $row->details->room){?>
                                         <li>Комнат:<span><?=$room?></span></li>
-                                    <?}?>
+                                    <?php }?>
                                 </ul>
                             </div>
                             <div class="product-price-container">
@@ -96,22 +96,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         echo $teg_div;
                     }
                     $count++;?>
-                <?endforeach;?>
+                <?php endforeach;?>
                 <?=$teg_div?>
-            <?}?>
+            <?php }?>
             <div class="mb30"></div><!-- space -->
-            <?if($pages){?>
+            <?php if($pages){?>
                 <nav class="pagination-container">
-                    <? echo \yii\widgets\LinkPager::widget([
+                    <?= \yii\widgets\LinkPager::widget([
                         'pagination' => $pages
                     ]) ?>
                 </nav>
-            <?}?>
-            <?if($description){?>
+            <?php }?>
+            <?php if($description){?>
                 <div class="category-details-container">
                     <p><?=$description?></p>
                 </div>
-            <?}else{}?>
+            <?php }else{}?>
         </div><!-- End .col-md-9 -->
         <div class="mb30 visible-sm visible-xs"></div><!-- space -->
         <aside class="col-md-3 col-md-pull-9 sidebar">

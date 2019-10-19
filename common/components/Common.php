@@ -1,4 +1,4 @@
-<?
+<?php
 namespace common\components;
 
 use common\models\Category;

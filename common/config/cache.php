@@ -2,12 +2,12 @@
 if ($_SERVER['SERVER_ADDR'] == '127.0.0.1')
 {
     return  [
-        'class' => 'yii\redis\Cache',
-        'redis' => [
+        'class' => 'yii\caching\FileCache',//'yii\redis\Cache',
+        /*'redis' => [
             'hostname' => 'localhost',
             'port' => 6379,
             'database' => 0,
-        ]
+        ]*/
     ];
 }else{
     return  [

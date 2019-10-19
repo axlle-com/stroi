@@ -14,19 +14,19 @@ use common\components\Common;
  * Time: 14:52
  */
 ?>
-<?$request_category = Yii::$app->request->get('alias_category');?>
-<?$request_item = Yii::$app->request->get('alias_item');?>
-<?$request_tags = Yii::$app->request->get('alias_tags');?>
-<?$request_page = Yii::$app->request->get('page');?>
-<?if($this->beginCache('leftBlog',[
+<?php $request_category = Yii::$app->request->get('alias_category');?>
+<?php $request_item = Yii::$app->request->get('alias_item');?>
+<?php $request_tags = Yii::$app->request->get('alias_tags');?>
+<?php $request_page = Yii::$app->request->get('page');?>
+<?php if($this->beginCache('leftBlog',[
     'variations' => [$request_category.$request_item.$request_tags.$request_page],
     'duration' => 0,
 ])):?>
-<?if($request_category == 'kontakt'){}else{?>
+<?php if($request_category == 'kontakt'){}else{?>
     <div class="widget">
         <h3 class="title-border custom">Навигация</h3>
         <ul class="links">
-            <?
+            <?php
             if(!$request_category && $request_item)
             {
                 $item = \common\models\Item::findOne(['alias_item' => $request_item]);
@@ -43,30 +43,31 @@ use common\components\Common;
                 {
                     if($row['alias_category'] == $request_category && ($request_item || $request_tags || $request_page)){?>
                         <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                    <?}elseif($row['alias_category'] == $request_category && !$request_item && !$request_tags && !$request_page){?>
+                    <?php }elseif($row['alias_category'] == $request_category && !$request_item && !$request_tags &&
+                        !$request_page){?>
                         <li class="active"><span><i class="fa fa-angle-right"></i><?=$row['title_short']?></span></li>
-                    <?}else{?>
+                    <?php }else{?>
                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                    <?}
+                    <?php }
                 }else
                 {
                     if($row->alias_item == $request_item){?>
                         <li class="active"><span><i class="fa fa-angle-right"></i><?=$row['title_short']?></span></li>
-                    <?}else{?>
-                        <?if(!$row->category->sitemap){?>
+                    <?php }else{?>
+                        <?php if(!$row->category->sitemap){?>
                             <li><a href="<?=Url::to(['/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                        <?}else{?>
+                        <?php }else{?>
                             <li><a href="<?=Url::to(['/'.$row->category->alias_category.'/'.$row['alias_item']])?>"><i class="fa fa-angle-right"></i><?=$row['title_short']?></a></li>
-                        <?}?>
-                    <?}
+                        <?php }?>
+                    <?php }
                 }
 
             }?>
         </ul>
     </div><!-- End .widget -->
-    <?}?>
-<?$this->endCache(); endif;?>
-<?if($this->beginCache('leftNavNews',[
+    <?php }?>
+<?php $this->endCache(); endif;?>
+<?php if($this->beginCache('leftNavNews',[
     'variations' => [$request_category.$request_item],
     'duration' => 7200,
 ])):?>
@@ -82,18 +83,18 @@ use common\components\Common;
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="description1">
                 <ul class="latest-posts-list">
-                    <?foreach(Common::getNews([11,12,15]) as $row)
+                    <?php foreach(Common::getNews([11,12,15]) as $row)
                     {?>
                     <li class="clearfix">
-                        <?if($row->alias_item == $request_item){?>
+                        <?php if($row->alias_item == $request_item){?>
                             <h5><a><?=$row->title_short?></a></h5>
-                        <?}else{?>
+                        <?php }else{?>
                             <h5><a href="<?=Common::createdLink($row)?>"><?=$row->title_short?></a></h5>
-                        <?}?>
-                        <?if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
+                        <?php }?>
+                        <?php if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
                         {?>
                             <figure><img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/tumb_<?=$img?>" class="img-responsive" alt="Фото-<?=$row->title_short?>"></figure>
-                        <?}?>
+                        <?php }?>
                         <div class="entry-content">
                             <ol>
                                 <li><?=Common::getData($row->date_pub,2)?></li>
@@ -101,23 +102,23 @@ use common\components\Common;
                             </ol>
                         </div><!-- End .entry-content -->
                     </li>
-                    <?}?>
+                    <?php }?>
                 </ul>
             </div><!-- End .tab-pane -->
             <div role="tabpanel" class="tab-pane" id="description2">
                 <ul class="latest-posts-list">
-                    <?foreach(Common::getNews([11,12,15],2) as $row)
+                    <?php foreach(Common::getNews([11,12,15],2) as $row)
                     {?>
                         <li class="clearfix">
-                            <?if($row->alias_item == $request_item){?>
+                            <?php if($row->alias_item == $request_item){?>
                                 <h5><a><?=$row->title_short?></a></h5>
-                            <?}else{?>
+                            <?php }else{?>
                                 <h5><a href="<?=Common::createdLink($row)?>"><?=$row->title_short?></a></h5>
-                            <?}?>
-                            <?if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
+                            <?php }?>
+                            <?php if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
                             {?>
                                 <figure><img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/tumb_<?=$img?>" class="img-responsive" alt="Фото-<?=$row->title_short?>"></figure>
-                            <?}?>
+                            <?php }?>
                             <div class="entry-content">
                                 <ol>
                                     <li><?=Common::getData($row->date_pub,2)?></li>
@@ -125,14 +126,14 @@ use common\components\Common;
                                 </ol>
                             </div><!-- End .entry-content -->
                         </li>
-                    <?}?>
+                    <?php }?>
                 </ul>
             </div><!-- End .tab-pane -->
         </div><!-- End .tab-content -->
     </div>
 </div>
 
-<?$this->endCache(); endif;?>
+<?php $this->endCache(); endif;?>
 <div class="widget">
     <ul class="left-baner">
         <li><a href="/skidki/skidka-na-doma-i-bani-iz-brevna-bolshogo-diametra.htm"><p class="bani_left">Скидка на дома и бани <strong>из бревна большого диаметра</strong></p></a></li>

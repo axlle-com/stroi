@@ -152,11 +152,11 @@ if($model->stars){
 
     <?= $form->field($model, 'infoblockArray')->checkboxList(\common\models\Infoblock::find()->select(['title', 'id'])->indexBy('id')->column()) ?>
 
-    <?if($alias_category = $model->category->alias_category){?>
+    <?php if($alias_category = $model->category->alias_category){?>
         <?= $form->field($model, 'tagsArray')->checkboxList(\common\models\Tags::find()->where(['alias_category' => $alias_category])->select(['name', 'id'])->indexBy('id')->column()) ?>
-    <?}else{?>
+    <?php }else{?>
         <?= $form->field($model, 'tagsArray')->checkboxList(\common\models\Tags::find()->select(['name', 'id'])->indexBy('id')->column()) ?>
-    <?}?>
+    <?php }?>
 
     <div class="form-group">
         <?= Html::submitButton('Дальше', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

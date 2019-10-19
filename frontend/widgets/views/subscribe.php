@@ -15,7 +15,7 @@ use yii\helpers\Html;
     <div class="newsletter-widget">
         <p>Подписавшись на нашу рассылку, вы всегда будете в курсе новостей.</p>
 
-        <? if (Yii::$app->session->hasFlash('messageSubscribe'))
+        <?php if (Yii::$app->session->hasFlash('messageSubscribe'))
         {
             $success = Yii::$app->session->getFlash('messageSubscribe');
             echo \yii\bootstrap\Alert::widget([
@@ -36,9 +36,9 @@ use yii\helpers\Html;
                 // остальные опции ActiveForm
             ]);?>
 
-            <? echo $form->field($model, 'email')->textInput(['placeholder' => 'Введите ваш Email','class'=>'form-control'])->label(false);?>
+            <?= $form->field($model, 'email')->textInput(['placeholder' => 'Введите ваш Email','class'=>'form-control'])->label(false);?>
             <?= Html::submitButton('<i class="fa fa-envelope"></i>', ['class' => 'btn btn-custom', 'name' => 'submit']) ?>
-            <? ActiveForm::end();
+            <?php ActiveForm::end();
             }?>
     </div><!-- End .newsletter-widget -->
 

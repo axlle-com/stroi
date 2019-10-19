@@ -38,10 +38,10 @@ if($request == 'kontakt'){$clss = 'kontakt';}
 
 <?php $this->beginBody() ?>
 <div id="wrapper">
-    <? echo $this->render("//inc/head") ?>
+    <?= $this->render("//inc/head") ?>
     <div id="content" role="main">
-        <?=Common::getBread()?>
-        <? if(Yii::$app->session->hasFlash('success')){
+        <?= Common::getBread()?>
+        <?php if(Yii::$app->session->hasFlash('success')){
         $success = Yii::$app->session->getFlash('success');
         echo \yii\bootstrap\Alert::widget([
             'options' => [
@@ -52,7 +52,7 @@ if($request == 'kontakt'){$clss = 'kontakt';}
     }?>
     <?= $content ?>
     </div><!-- End #content -->
-    <? echo $this->render("//inc/footer") ?>
+    <?= $this->render("//inc/footer") ?>
 </div>
 <a href="#top" id="scroll-top" title="Наверх"><i class="fa fa-angle-up"></i></a>
 

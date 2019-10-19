@@ -13,15 +13,15 @@ $items = Common::getSlider()['items'];
 $images = Common::getSlider()['images'];
 //$this->registerJsFile('js/jquery.themepunch.revolution.min.js');
 ?>
-<?if($this->beginCache('slider',[
+<?php if($this->beginCache('slider',[
     'variations' => ['slider'],
     'duration' => 7200,
 ])):?>
     <div id="carousel" class="home-slide carousel slide carousel-fade" data-interval="8000" data-ride="carousel">
         <!-- Carousel items -->
         <div class="carousel-inner">
-            <?$cnt = 0;foreach($items as $row):?>
-                <?if($cnt == 0){ $active = 'item-vis';}else{$active = 'item-vis';}?>
+            <?php $cnt = 0;foreach($items as $row):?>
+                <?php if($cnt == 0){ $active = 'item-vis';}else{$active = 'item-vis';}?>
 
                 <div class="item <?=$active?>">
                     <div class="fill_1 img-scl" data-url="/images/item/<?=$row->alias_item?>/general/<?=\common\components\Common::showGeneralImage($row)[0]?>" style="background-image: url('/images/item/<?=$row->alias_item?>/general/<?=\common\components\Common::showGeneralImage($row)[0]?>')"></div>
@@ -40,7 +40,7 @@ $images = Common::getSlider()['images'];
                     </div>
                 </div>
 
-                <?$cnt++;endforeach;?>
+                <?php $cnt++;endforeach;?>
         </div>
         <nav class="nav-diamond">
             <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
@@ -176,23 +176,23 @@ $images = Common::getSlider()['images'];
         <h2 class="title-underblock custom text-uppercase text-center mb50">Сервисы компании</h2>
 
         <div class="row">
-            <?$cnt = 0;foreach (Common::getHomeFav()as $row):?>
+            <?php $cnt = 0;foreach (Common::getHomeFav()as $row):?>
             <div class="col-sm-4">
                 <div class="service vertical service-hover-bg dark text-center service-box" data-box-animation="to-right-animation-<?=$cnt?>">
-                    <?$img = Common::showGeneralImage($row)[0];
+                    <?php $img = Common::showGeneralImage($row)[0];
                     if($img && $row->show_img_cat)
                     {?>
                     <span class="service-icon"><img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/<?=$img?>" alt="<?=$row->title_short?>" class="img-responsive"></span>
-                    <?}?>
+                    <?php }?>
                     <div class="service-content">
                         <h3 class="service-title text-uppercase"><a href="<?=Common::createdLink($row)?>"><?=$row->title_short?></a></h3>
                         <p><?=Common::substr($row->description,0,230)?></p>
                     </div><!-- End .service-content -->
                 </div><!-- End .service -->
             </div><!-- End .col-sm-4 -->
-                <?$cnt++?>
-                <?if($cnt == 3){echo '</div><div class="row">';}?>
-            <?endforeach;?>
+                <?php $cnt++?>
+                <?php if($cnt == 3){echo '</div><div class="row">';}?>
+            <?php endforeach;?>
         </div><!-- End .row -->
     </div>
     </div><!-- End .bg-lightergray -->
@@ -216,16 +216,16 @@ $images = Common::getSlider()['images'];
     </div>
     <div id="latest-posts" class="container mb50">
         <div class="home-blogposts-carousel owl-carousel nav-border center-nav center-nav-animate no-radius custom-news-carousel" data-owl-carousel="entry-box" data-responsive="3-3-2-1">
-            <?foreach(Common::getNews([11,12,15],1) as $row){?>
+            <?php foreach(Common::getNews([11,12,15],1) as $row){?>
 
             <article class="entry entry-box custom-news">
                 <div class="entry-media">
                     <figure>
                         <a href="<?=Common::createdLink($row)?>">
-                            <?if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
+                            <?php if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
                             {?>
                                 <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="Фото-<?=$row->title_short?>">
-                            <?}?>
+                            <?php }?>
                         </a>
                     </figure>
                 </div><!-- End .entry-media -->
@@ -244,7 +244,7 @@ $images = Common::getSlider()['images'];
                     <a href="<?=Common::createdLink($row)?>" class="entry-readmore text-right">Читать...<i class="fa fa-angle-right"></i></a>
                 </footer>
             </article>
-            <?}?>
+            <?php }?>
         </div>
     </div>
     <div class="bg-dark pb70 custom-gallery">
@@ -255,21 +255,21 @@ $images = Common::getSlider()['images'];
         </div>
         <div class="container">
             <div class="home-blogposts-carousel owl-carousel nav-border center-nav center-nav-animate no-radius custom-news-carousel" data-owl-carousel="entry-box" data-responsive="3-3-2-1">
-                <?foreach(Common::getNews([21],1) as $row){?>
+                <?php foreach(Common::getNews([21],1) as $row){?>
 
                     <div class="entry entry-box">
                         <div class="entry-media">
                             <figure>
                                 <a href="<?=Common::createdLink($row)?>">
-                                    <?if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
+                                    <?php if(($img = Common::showGeneralImage($row)[0]) && $row->show_img_cat)
                                     {?>
                                         <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="Фото-<?=$row->title_short?>">
-                                    <?}?>
+                                    <?php }?>
                                 </a>
                             </figure>
                         </div><!-- End .entry-media -->
                     </div>
-                <?}?>
+                <?php }?>
             </div>
         </div>
     </div>
@@ -297,21 +297,21 @@ $images = Common::getSlider()['images'];
             <h2 class="title-underblock custom text-uppercase text-center mb50">Клиенты о нас</h2>
         </header>
         <div class="owl-carousel testimonial-carousel2 gray-nav" data-owl-carousel="blockquote-icon" data-responsive="2-2-2-1">
-            <?$tesm = Common::getTesm();
+            <?php $tesm = Common::getTesm();
             if($tesm){
                 foreach ($tesm as $row){?>
                     <blockquote class="blockquote-icon">
                         <p><?=Common::substr($row->description,0,300)?></p>
                         <cite><?=$row->name.'/'.$row->place?></cite>
                     </blockquote>
-                <?}
+                <?php }
             }?>
             
         </div><!-- End .our-partners -->
     </div><!-- End .container -->
 
 </div><!-- End #content -->
-<?$this->endCache(); endif;?>
+<?php $this->endCache(); endif;?>
 
 
 

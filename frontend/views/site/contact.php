@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -94,7 +94,7 @@ $this->registerJsFile('/js/map.js');
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
         </div>
         <aside class="col-md-3 col-md-pull-9 sidebar">
-            <? echo $this->render("//inc/leftBlog") ?>
+            <?= $this->render("//inc/leftBlog") ?>
         </aside><!-- End .col-md-3 -->
     </div>
 </div>
@@ -107,7 +107,7 @@ $this->registerJsFile('/js/map.js');
                 <h3 class="modal-title" id="myModalLabel5">Написать нам</h3>
             </div><!-- End .modal-header -->
             <div class="modal-body">
-                <? echo \frontend\widgets\MessageWidget::widget() ?>
+                <?= \frontend\widgets\MessageWidget::widget() ?>
             </div><!-- End .modal-body -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>

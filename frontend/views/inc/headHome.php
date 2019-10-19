@@ -1,4 +1,4 @@
-    <?php
+<?php
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -63,7 +63,7 @@ use common\components\Common;
 
                     <button type="button" class="navbar-btn btn-icon pull-right last visible-sm visible-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
                 </div><!-- End .navbar-header -->
-                <?if($this->beginCache('topNavHome',[
+                <?php if($this->beginCache('topNavHome',[
                     'variations' => [$request_alias.$request_item],
                     'duration' => 0,
                 ])):?>
@@ -72,59 +72,59 @@ use common\components\Common;
                         <li class="dropdown">
                             <a class="dropdown-toggle <?=$active_2?>" data-toggle="dropdown" role="button" aria-expanded="false">Проекты<span class="angle"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(2) as $row)
+                                <?php foreach (Common::getTopNav(2) as $row)
                                 {
                                     if($row['alias_category'] == $request_alias){?>
                                         <li class="active"><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Url::to(['/'.$row['alias_category']])?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle <?=$active_4?>" data-toggle="dropdown" role="button" aria-expanded="false">Цены<span class="angle"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(9,0) as $row)
+                                <?php foreach (Common::getTopNav(9,0) as $row)
                                 {
                                     if($row['alias_item'] == $request_item){?>
                                         <li class="active"><a href="<?=Common::createdLink($row)?>"><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Common::createdLink($row)?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle <?=$active_5?>" data-toggle="dropdown" role="button" aria-expanded="false">Информация<span class="angle"></span></a>
                             <ul class="dropdown-menu pull-right" role="menu">
-                                <?foreach (Common::getTopNav(10) as $row)
+                                <?php foreach (Common::getTopNav(10) as $row)
                                 {
                                     if($row['alias_category'] == $request_alias){?>
                                         <li class="active"><a href="<?=Common::createdLink($row)?>"><?=$row['title_short']?></a></li>
-                                    <?}else{?>
+                                    <?php }else{?>
                                         <li><a href="<?=Common::createdLink($row)?>"><?=$row['title_short']?></a></li>
-                                    <?}
+                                    <?php }
                                 }?>
                                 <li><a href="<?=Url::to(['/otdelka-derevyannogo-doma'])?>">Отделка деревянного дома</a></li>
                             </ul>
                         </li>
-                        <?if($request_alias == 'gallery' ){?>
+                        <?php if($request_alias == 'gallery' ){?>
                             <li><a class="active">Галерея</a></li>
-                        <?}else{?>
+                        <?php }else{?>
                             <li><a href="<?= Url::to(['/gallery']);?>">Галерея</a></li>
-                        <?}?>
-                        <?if($request_alias == 'otzyvy' ){?>
+                        <?php }?>
+                        <?php if($request_alias == 'otzyvy' ){?>
                             <li><a class="active">Отзывы</a></li>
-                        <?}else{?>
+                        <?php }else{?>
                             <li><a href="<?= Url::to(['/otzyvy']);?>">Отзывы</a></li>
-                        <?}?>
+                        <?php }?>
                         <li><a href="<?= Url::toRoute('/kontakt');?>">Контакты</a></li>
                     </ul>
 
                     <button type="button" class="navbar-btn btn-icon navbar-right last  hidden-sm hidden-xs" data-toggle="collapse" data-target="#header-search-form"><i class="fa fa-search"></i></button>
                 </div><!-- /.navbar-collapse -->
-                <?$this->endCache(); endif;?>
+                <?php $this->endCache(); endif;?>
             </div><!-- /.container -->
         </div><!-- End .navbar-inner -->
     </nav>

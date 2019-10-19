@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="container">
         <div class="row">
-<!-- content --><?
+<!-- content --><?php
             if($this->beginCache('category',[
                 'variations' => [$category->alias_category.$request_sort.$request_page],
                 'duration' => 0,
@@ -38,19 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-9 col-md-push-3">
 
                 <div class="row"><div class="col-md-12"><h1 id="sort" class="title-underblock custom"><?=$title?></h1></div></div>
-                <?
+                <?php
                     $alias_category = Yii::$app->request->get(trim('alias_category'));
                     $request_tags = Yii::$app->request->get(trim('alias_tags'));
                     $tags = Common::getTag($alias_category);
                 ?>
-                <?if(!count($model)){}else{?>
-                    <?
+                <?php if(!count($model)){}else{?>
+                    <?php
                     $count = 1;
                     $teg_row = '<div class="row">';
                     $teg_div = '</div><!-- End .row -->';
                     ?>
-                    <?foreach($model as $row):?>
-                    <?if($count == 1 || $count%2 != 0)
+                    <?php foreach($model as $row):?>
+                    <?php if($count == 1 || $count%2 != 0)
                         echo $teg_row;
                     ?>
                     <div class="col-sm-6">
@@ -58,46 +58,46 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="product-top">
                                 <figure>
                                     <a href="<?=Common::createdLink($row)?>" title="<?=$row->title?>">
-                                        <?if($img = Common::showGeneralImage($row)[0])
+                                        <?php if($img = Common::showGeneralImage($row)[0])
                                         {?>
                                             <img src="/images/<?=$row->getFolder().'/'.$row->alias_item?>/general/small_<?=$img?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}else{?>
+                                        <?php }else{?>
                                             <img src="<?=Yii::$app->params['photo']?>" alt="<?=$row->title?>" class="img-responsive">
-                                        <?}?>
+                                        <?php }?>
                                     </a>
                                 </figure>
                             </div><!-- End .product-top -->
                             <h3 class="product-title"><a href="<?=Common::createdLink($row)?>" title="<?=$row->title?>"><?=$row->title?></a></h3>
                         </div><!-- End .product -->
                     </div><!-- End .col-sm-6 -->
-                    <?
+                    <?php
                         if ($count%2 == 0 /*&& $count != $pages_size && $count != $items_count*/ && $count != count($model))
                         {
                             echo $teg_div;
                         }
                         $count++;?>
-                    <?endforeach;?>
+                    <?php endforeach;?>
                     <?=$teg_div?>
-                <?}?>
+                <?php }?>
                 <div class="mb30"></div><!-- space -->
-                <?if($pages){?>
+                <?php if($pages){?>
                 <nav class="pagination-container">
-                    <? echo \yii\widgets\LinkPager::widget([
+                    <?= \yii\widgets\LinkPager::widget([
                         'pagination' => $pages
                     ]) ?>
                 </nav>
-                <?}?>
-                <?if($description){?>
+                <?php }?>
+                <?php if($description){?>
                     <div class="category-details-container">
                         <p><?=$description?></p>
                     </div>
-                <?}else{}?>
+                <?php }else{}?>
             </div><!-- End .col-md-9 -->
 
-<!-- content --><?$this->endCache(); endif;?>
+<!-- content --><?php $this->endCache(); endif;?>
             <div class="mb30 visible-sm visible-xs"></div><!-- space -->
             <aside class="col-md-3 col-md-pull-9 sidebar">
-                <? echo $this->render("//inc/leftBan") ?>
+                <?= $this->render("//inc/leftBan") ?>
             </aside>
         </div><!-- End .row -->
 

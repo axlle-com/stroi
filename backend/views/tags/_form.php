@@ -12,7 +12,6 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <? /*echo $form->field($model, 'sitemap')->textInput() */?>
 
     <?= $form->field($model, 'sitemap')->dropDownList([
         '1' => 'Показывать',
@@ -20,9 +19,8 @@ use yii\helpers\ArrayHelper;
     ]);
     ?>
 
-    <? /*echo $form->field($model, 'alias_category')->textInput(['maxlength' => true]) */?>
 
-    <?
+    <?php
     $category = common\models\Category::find()->where(['parent_id' => 2])->all();
     $items = ArrayHelper::map($category,'alias_category','title');
     $params = [
@@ -42,10 +40,6 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'description_seo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-    <?/*= $form->field($model, 'name')->textInput(['maxlength' => true]) */?>
-
-    <?/*= $form->field($model, 'type')->textInput(['maxlength' => true]) */?>
 
     <?= $form->field($model, 'type')->dropDownList([
         '0' => 'Не показывать',
