@@ -456,9 +456,9 @@ class SiteController extends Controller
         $related = Common::getRelated($model);
         $model->updateCounters(['hits' => 1]);
         $query = Item::find()->alias('i')
-            ->select(['i.published hour','i.date_pub min','infoblock.date_pub id'])
+            ->select(['i.published hour','i.date_pub min','b.date_pub id'])
             ->joinWith([
-                'infoblocks' /*=> function($qury){
+                'infoblocks b' /*=> function($qury){
                         $qury->select(['infoblock.date_pub']);
                     },*/
                 ])
