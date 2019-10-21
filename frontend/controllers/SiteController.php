@@ -418,16 +418,8 @@ class SiteController extends Controller
             ->andWhere(['i.id' => $r])
             ->andWhere(['sitemap' => 1])
             ->joinWith('details as d')
-            ->asArray()->one();
-        $query = Item::find()->alias('i')
-            ->joinWith('infoblocks as b')
-            ->distinct()
             ->asArray()
-            ->all();
-        echo '<pre>';
-        print_r($query);
-        echo '</pre>';
-        exit();
+            ->one();
         $max = $itemPrice['max_price'];
         $max = Common::getShemaPrice($max,'');
         $min = $itemPrice['min_price'];
