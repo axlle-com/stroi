@@ -581,14 +581,12 @@ class Common extends Component{
     }
     public static function getSlider()
     {
-        $id = [];
-        $category = Category::find()->where(['parent_id' => 2])->all();
-        foreach($category as $row)
-        {
-            $id = $row->id;
-        }
-
-        //$items = Item::find()->where(['in', 'category_id', $id]) ->orderBy(['hits'=>SORT_ASC])->limit(3)->all();
+        $category = Category::find()
+            ->select('id')
+            ->where(['parent_id' => 2])
+            ->asArray()
+            ->all();
+        //$items = Item::find()->where(['in', 'category_id', $category]) ->orderBy(['hits'=>SORT_ASC])->limit(3)->all();
         $item_1 = Item::find()->where(['category_id'=> 1])->orderBy(['hits'=>SORT_ASC])->one();
         $item_2 = Item::find()->where(['category_id'=> 5])->orderBy(['hits'=>SORT_ASC])->one();
         $item_3 = Item::find()->where(['category_id'=> 6])->orderBy(['hits'=>SORT_ASC])->one();
@@ -596,7 +594,7 @@ class Common extends Component{
 
         foreach($items as $row)
         {
-            $images = Common::showGeneralImage($row);
+            $images = self::showGeneralImage($row);
         }
         return [
             'items' => $items,

@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\components\Common;
+use common\models\Infoblock;
 use common\models\Reviews;
 use common\models\Tags;
 use Yii;
@@ -134,14 +135,24 @@ class SiteController extends Controller
     {
         $cookie = $_COOKIE['srbstrfvrt'];
         $cookie = json_decode($cookie);
-        $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
-        $items_count = clone $query;//count($category->items);
-        $pages = new Pagination(['totalCount' => $items_count->count()]);
-        $pages->setPageSize(12);
-        $pages_size = $pages->getPageSize();
-        $pages->forcePageParam = false;
-        $pages->pageSizeParam = false;
-        $model = $query->offset($pages->offset)->limit($pages->limit)->all();
+        print_r($cookie);
+        if(count($cookie))
+        {
+            $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
+            $items_count = clone $query;
+            $pages = new Pagination(['totalCount' => $items_count->count()]);
+            $pages->setPageSize(12);
+            $pages_size = $pages->getPageSize();
+            $pages->forcePageParam = false;
+            $pages->pageSizeParam = false;
+            $model = $query->offset($pages->offset)->limit($pages->limit)->all();
+            return $this->render('favorite',[
+                'model' => $model,
+                'pages' => $pages,
+                'pages_size' => $pages_size,
+                'category' => $category,
+            ]);
+        }
         return $this->render('favorite',[
             'model' => $model,
             'pages' => $pages,
@@ -332,15 +343,15 @@ class SiteController extends Controller
         }elseif ($category->render->name == 'favorite'){
             $cookie = $_COOKIE['srbstrfvrt'];
             $cookie = json_decode($cookie);
-            if($sort){
-                if($sort == 'price-desc'){
-                    $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_DESC]);
+                if($sort){
+                    if($sort == 'price-desc'){
+                        $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_DESC]);
+                    }else{
+                        $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
+                    }
                 }else{
                     $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
                 }
-            }else{
-                $query = Item::find()->where(['id' => $cookie])->andWhere(['sitemap' => 1])->orderBy(['position'=>SORT_ASC]);
-            }
         }else{
             $itemPrice = Item::find()->alias('i')
                 ->select('MIN(d.original_price) AS min_price, MAX(d.original_price) AS max_price')
@@ -408,6 +419,15 @@ class SiteController extends Controller
             ->andWhere(['sitemap' => 1])
             ->joinWith('details as d')
             ->asArray()->one();
+        $query = Item::find()->alias('i')
+            ->joinWith('infoblocks as b')
+            ->distinct()
+            ->asArray()
+            ->all();
+        echo '<pre>';
+        print_r($query);
+        echo '</pre>';
+        exit();
         $max = $itemPrice['max_price'];
         $max = Common::getShemaPrice($max,'');
         $min = $itemPrice['min_price'];
@@ -443,6 +463,21 @@ class SiteController extends Controller
         $model = Item::findOne(['alias_item' => $alias_item]);
         $related = Common::getRelated($model);
         $model->updateCounters(['hits' => 1]);
+        $query = Item::find()->alias('i')
+            ->select(['i.published','infoblock.date_pub'])
+            ->joinWith([
+                'infoblocks' /*=> function($qury){
+                        $qury->select(['infoblock.date_pub']);
+                    },*/
+                ])
+            //->distinct(['i.published'])
+            ->groupBy(['i.published','infoblock.date_pub'])
+            ->asArray()
+            ->all();
+        echo '<pre>';
+        print_r($query);
+        echo '</pre>';
+        exit();
         return $this->render($model->render->name,[
             'model' => $model,
             'category_name' => $model->category->title,

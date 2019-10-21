@@ -33,11 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-9 col-md-push-3">
 
             <div class="row"><div class="col-md-12"><h1 id="sort" class="title-underblock custom">Избранные проекты</h1></div></div>
-            <?
-            $alias_category = Yii::$app->request->get(trim('alias_category'));
-            $request_tags = Yii::$app->request->get(trim('alias_tags'));
-            $tags = Common::getTag($alias_category);
-            ?>
             <div class="row">
                 <div class="col-md-12 sort">
                     <span class="sort-title">Сортировка:</span>
@@ -49,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
             <?php if(!count($model)){}else{?>
-                <?
+                <?php
                 $count = 1;
                 $teg_row = '<div class="row">';
                 $teg_div = '</div><!-- End .row -->';
@@ -90,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div><!-- End .product-price-container -->
                         </div><!-- End .product -->
                     </div><!-- End .col-sm-6 -->
-                    <?
+                    <?php
                     if ($count%2 == 0 /*&& $count != $pages_size && $count != $items_count*/ && $count != count($model))
                     {
                         echo $teg_div;

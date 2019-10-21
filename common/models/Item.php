@@ -195,7 +195,8 @@ class Item extends \yii\db\ActiveRecord
      */
     public function getInfoblocks()
     {
-        return $this->hasMany(Infoblock::className(), ['id' => 'infoblock_id'])->viaTable('infoblock_has_item', ['item_id' => 'id']);
+        return $this->hasMany(Infoblock::className(), ['id' => 'infoblock_id'])
+            ->viaTable('infoblock_has_item', ['item_id' => 'id']);
     }
 
     /**
