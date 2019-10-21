@@ -464,14 +464,14 @@ class SiteController extends Controller
         $related = Common::getRelated($model);
         $model->updateCounters(['hits' => 1]);
         $query = Item::find()->alias('i')
-            ->select(['i.published','infoblock.date_pub'])
+            ->select(['i.published','i.date_pub','infoblock.date_pub vvv'])
             ->joinWith([
                 'infoblocks' /*=> function($qury){
                         $qury->select(['infoblock.date_pub']);
                     },*/
                 ])
             //->distinct(['i.published'])
-            ->groupBy(['i.published','infoblock.date_pub'])
+            ->groupBy(['i.published','i.date_pub','vvv'])
             ->asArray()
             ->all();
         echo '<pre>';
