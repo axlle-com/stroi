@@ -35,4 +35,3 @@ phpunit.phar
 /frontend/runtime/
 /backend/runtime/
 /common/runtime/
-/composer.json
