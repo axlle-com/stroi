@@ -233,7 +233,6 @@ class Common extends Component{
         }
         return false;
     }
-
     public function contact($subject,$text)
     {
         if (Yii::$app->mailer->compose()
@@ -245,10 +244,6 @@ class Common extends Component{
             return true;
         }
         return false;
-    }
-    public function notifyAdmin($event){
-
-        print "Notify Admin";
     }
     public static function showGeneralImage($model){
 
@@ -477,7 +472,6 @@ class Common extends Component{
             ->limit(6)->orderBy(['hits'=>SORT_DESC])->all();
         return $related;
     }
-
     public static function getTitlePage($data)
     {
         if($data == 'category')

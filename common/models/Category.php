@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use phpDocumentor\Reflection\Types\Self_;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
@@ -48,7 +49,7 @@ class Category extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
     public function scenarios(){
@@ -87,7 +88,7 @@ class Category extends \yii\db\ActiveRecord
             [['title_short'], 'string', 'max' => 150],
             [['title'], 'unique'],
             [['alias_category'], 'unique'],
-            [['render_id'], 'exist', 'skipOnError' => true, 'targetClass' => Render::className(), 'targetAttribute' => ['render_id' => 'id']],
+            [['render_id'], 'exist', 'skipOnError' => true, 'targetClass' => Render::class, 'targetAttribute' => ['render_id' => 'id']],
         ];
     }
 
@@ -126,7 +127,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getRender()
     {
-        return $this->hasOne(Render::className(), ['id' => 'render_id']);
+        return $this->hasOne(Render::class, ['id' => 'render_id']);
     }
 
     /**
@@ -134,7 +135,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(Item::className(), ['category_id' => 'id']);
+        return $this->hasMany(Item::class, ['category_id' => 'id']);
     }
 
     /**
@@ -142,7 +143,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getReviews()
     {
-        return $this->hasMany(Reviews::className(), ['category_id' => 'id']);
+        return $this->hasMany(Reviews::class, ['category_id' => 'id']);
     }
 
     /**
@@ -150,7 +151,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getSemanticos()
     {
-        return $this->hasMany(Semantico::className(), ['category_id' => 'id']);
+        return $this->hasMany(Semantico::class, ['category_id' => 'id']);
     }
 
     /**
@@ -198,6 +199,6 @@ class Category extends \yii\db\ActiveRecord
     }
 
     public function getFolder(){
-        return $this::tableName();
+        return self::tableName();
     }
 }
